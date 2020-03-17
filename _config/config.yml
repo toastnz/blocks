@@ -1,0 +1,69 @@
+---
+Name: toastblocks
+---
+
+Page:
+  extensions:
+    - Toast\Blocks\Extensions\PageExtension
+
+Toast\Blocks\Extensions\PageExtension:
+  available_blocks:
+    - Toast\Blocks\TextBlock
+
+SilverStripe\Admin\LeftAndMain:
+  extra_requirements_css:
+    - blocks/css/blocks.css
+
+SilverStripe\Assets\File:
+  extensions:
+    - Toast\Blocks\Extensions\FileExtension
+
+SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest:
+  extensions:
+    CmsActionsExtension: Toast\Blocks\Extensions\CmsActionsExtension
+
+Toast\Blocks\TextBlock:
+  icon: 'blocks/images/text.png'
+
+Toast\Blocks\AccordionBlock:
+  icon: 'blocks/images/accordion.png'
+
+Toast\Blocks\ChildLinkBlock:
+  icon: 'blocks/images/link.png'
+  content_field: 'Content'
+
+Toast\Blocks\ColumnBlock:
+  icon: 'blocks/images/splitblock.png'
+
+Toast\Blocks\DownloadBlock:
+  icon: 'blocks/images/download.png'
+
+Toast\Blocks\GalleryBlock:
+  icon: 'blocks/images/gallery.png'
+
+Toast\Blocks\HeroBlock:
+  icon: 'blocks/images/hero.png'
+
+Toast\Blocks\ImageBlock:
+  icon: 'blocks/images/image.png'
+
+Toast\Blocks\LinkBlock:
+  icon: 'blocks/images/link.png'
+
+Toast\Blocks\NewsBlock:
+  icon: 'blocks/images/news.png'
+
+Toast\Blocks\PercentageBlock:
+  icon: 'blocks/images/.png'
+
+Toast\Blocks\TabbedContentBlock:
+  icon: 'blocks/images/statistic.png'
+
+Toast\Blocks\TestimonialBlock:
+  icon: 'blocks/images/testimonial.png'
+
+Toast\Blocks\VideoBlock:
+  icon: 'blocks/images/video.png'
+
+Toast\Blocks\SplitBlock:
+  icon: 'blocks/images/splitblock.png'
