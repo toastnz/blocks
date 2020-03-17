@@ -1,7 +1,7 @@
-<section class="videoBlock contentBlock">
+<section class="videoBlock block">
     <div class="videoBlock__wrap row">
         <div class="column">
-            <a href="#" data-video="$Video" style="background-image: url('<% if $ThumbnailID %>$Thumbnail.URL<% else %>$Video.ThumbnailURL<% end_if %>');" class="videoBlock__wrap__media [ js-embed ]">
+            <a href="#" data-video="$Video" style="background-image: url('<% if $ThumbnailID %>$Thumbnail.URL<% else %>$Video.ThumbnailURL<% end_if %>');" class="videoBlock__wrap__media [ js-video-modal ]">
                 $SVG('play')
             </a>
         </div>

@@ -1,4 +1,4 @@
-<section class="accordionBlock contentBlock [ js-accordion ]">
+<section class="accordionBlock block [ js-accordion ]">
     <div class="accordionBlock__wrap row">
         <div class="column">
             <% loop $Items %>

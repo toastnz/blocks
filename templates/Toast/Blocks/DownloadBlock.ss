@@ -1,20 +1,36 @@
+<%----------------------------------------------------------------
+Download Block
+----------------------------------------------------------------%>
 <% if $Items %>
-    <section class="downloadBlock contentBlock" data-equalize>
-        <div class="downloadBlock__wrap row">
-            <div class="column">
+    <section class="downloadBlock block">
+        <div class="downloadBlock__wrap">
+
+            <div class="downloadBlock__wrap__list">
+
                 <% loop $Items.Sort('SortOrder') %>
+ 
+                    <%----------------------------------------------------------------
+                    Download Block Item
+                    ----------------------------------------------------------------%>
                     <% with $File %>
-                        <a href="{$AbsoluteLink}" download class="column downloadBlock__wrap__item">
-                            <div class="downloadBlock__wrap__item__heading" data-equalize-watch>
-                                <h5 class="downloadBlock__wrap__item__heading__title title">$Title</h5>
+                        <a href="{$AbsoluteLink}" class="downloadBlock__wrap__list__item">
+
+                            <div class="downloadBlock__wrap__list__item__icon">
+                                $SVG('download')
+                            </div>
+
+                            <div class="downloadBlock__wrap__list__item__details">
+                                <h5 class="downloadBlock__wrap__list__item__details__title">{$Title}</h5>
+
                                 <% if $Up.Summary %>
-                                    <div class="downloadBlock__summary">
+                                    <div class="downloadBlock__wrap__list__item__details__summary">
                                         $Up.Summary.XML
                                     </div>
                                 <% end_if %>
-                                <h6 class="downloadBlock__wrap__item__heading__info info">$MimeType, $Size</h6>
-                                <div class="icon">$SVG('download')</div>
+
+                                <p class="downloadBlock__wrap__list__item__details">{$Extension.upperCase} {$Size}</p>
                             </div>
+                                
                         </a>
                     <% end_with %>
                 <% end_loop %>

@@ -1,9 +1,9 @@
 <% if $Content %>
-	<section class="toastBlock contentBlock">
-	    <div class="toastBlock__wrap row">
-	        <div class="column">
-	            {$Content}
-	        </div>
-	    </div>
-	</section>
+<section class="textBlock block">
+	<div class="textBlock__wrap row">
+		<div class="column">
+			{$Content}
+		</div>
+	</div>
+</section>
 <% end_if %>

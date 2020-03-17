@@ -23,7 +23,7 @@ use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 class BlocksAdmin extends ModelAdmin
 {
     private static $url_segment = 'blocks';
-    
+
     private static $menu_title = 'Blocks';
 
     private static $menu_icon_class = 'font-icon-list';
@@ -34,7 +34,6 @@ class BlocksAdmin extends ModelAdmin
         ]
     ];
 
-
     public function getEditForm($id = null, $fields = null)
     {
         $form = parent::getEditForm($id, $fields);
@@ -42,7 +41,7 @@ class BlocksAdmin extends ModelAdmin
         $gridField = $form->Fields()->fieldByName($gridFieldName);
 
         $multiClass = new GridFieldAddNewMultiClass();
-        $multiClass->setClasses(Config::inst()->get(PageExtension::class, 'available_blocks'));        
+        $multiClass->setClasses(Config::inst()->get(PageExtension::class, 'available_blocks'));
 
         $gridField->getConfig()
             ->removeComponentsByType(GridFieldAddNewButton::class)
@@ -51,14 +50,10 @@ class BlocksAdmin extends ModelAdmin
             ->addComponent($multiClass)
             ->removeComponentsByType(GridFieldExportButton::class)
             ->removeComponentsByType(GridFieldImportButton::class)
-            ->removeComponentsByType(GridFieldPrintButton::class)    
+            ->removeComponentsByType(GridFieldPrintButton::class)
             ->getComponentByType(GridFieldDetailForm::class)
             ->setItemRequestClass(VersionedGridFieldItemRequest::class);
-        
+
         return $form;
     }
-
-
 }
-
-
