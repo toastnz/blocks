@@ -12,7 +12,7 @@ Toast\Blocks\Extensions\PageExtension:
 
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
-    - blocks/css/blocks.css
+    # - blocks/css/blocks.css
 
 SilverStripe\Assets\File:
   extensions:
@@ -23,47 +23,47 @@ SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest:
     CmsActionsExtension: Toast\Blocks\Extensions\CmsActionsExtension
 
 Toast\Blocks\TextBlock:
-  icon: 'blocks/images/text.png'
+  icon: 'blocks/images/text.svg'
 
 Toast\Blocks\AccordionBlock:
-  icon: 'blocks/images/accordion.png'
+  icon: 'blocks/images/accordion.svg'
 
 Toast\Blocks\ChildLinkBlock:
-  icon: 'blocks/images/link.png'
+  icon: 'blocks/images/link.svg'
   content_field: 'Content'
 
 Toast\Blocks\ColumnBlock:
-  icon: 'blocks/images/splitblock.png'
+  icon: 'blocks/images/splitblock.svg'
 
 Toast\Blocks\DownloadBlock:
-  icon: 'blocks/images/download.png'
+  icon: 'blocks/images/download.svg'
 
 Toast\Blocks\GalleryBlock:
-  icon: 'blocks/images/gallery.png'
+  icon: 'blocks/images/gallery.svg'
 
 Toast\Blocks\HeroBlock:
-  icon: 'blocks/images/hero.png'
+  icon: 'blocks/images/hero.svg'
 
 Toast\Blocks\ImageBlock:
-  icon: 'blocks/images/image.png'
+  icon: 'blocks/images/image.svg'
 
 Toast\Blocks\LinkBlock:
-  icon: 'blocks/images/link.png'
+  icon: 'blocks/images/link.svg'
 
 Toast\Blocks\NewsBlock:
-  icon: 'blocks/images/news.png'
+  icon: 'blocks/images/news.svg'
 
 Toast\Blocks\PercentageBlock:
-  icon: 'blocks/images/.png'
+  icon: 'blocks/images/.svg'
 
 Toast\Blocks\TabbedContentBlock:
-  icon: 'blocks/images/statistic.png'
+  icon: 'blocks/images/statistic.svg'
 
 Toast\Blocks\TestimonialBlock:
-  icon: 'blocks/images/testimonial.png'
+  icon: 'blocks/images/testimonial.svg'
 
 Toast\Blocks\VideoBlock:
-  icon: 'blocks/images/video.png'
+  icon: 'blocks/images/video.svg'
 
 Toast\Blocks\SplitBlock:
-  icon: 'blocks/images/splitblock.png'
+  icon: 'blocks/images/splitblock.svg'

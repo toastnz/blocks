@@ -1,15 +1,23 @@
+<%------------------------------------------------------------------
+Image block
+------------------------------------------------------------------%>
 <% if $Image %>
-    <section class="imageBlock contentBlock">
-        <div class="imageBlock__wrap row">
-            <div class="column">
-            <% if $Image %>
-                <% with $Image %>
-                    <img src="{$Fit(1100,600).URL}" alt="$Title" class="imageBlock__wrap__media">
-                <% end_with %>
-            <% else %>
-                <img src="https://via.placeholder.com/1920x1000" alt="$Title" class="imageBlock__wrap__media">
-            <% end_if %>
+
+<section class="imageBlock contentBlock">
+    <div class="imageBlock__wrap">
+        <picture>
+            <source media="(min-width: 1200px)" srcset="$Image.FocusFill(1920,1080).URL">
+            <source media="(min-width: 800px)" srcset="$Image.FocusFill(960,540).URL">
+            <source media="(min-width: 320px)" srcset="$Image.FocusFill(480,270).URL">
+            <img src="$Image.FocusFill(1920,1080).URL" alt="$Image.Title">
+        </picture>
+
+        <% if $Caption %>
+            <div class="imageBlock__wrap__caption [ js-in-view ]">
+                <p>$Caption</p>
             </div>
-        </div>
-    </section>
+        <% end_if %>
+    </div>
+</section>
+
 <% end_if %>

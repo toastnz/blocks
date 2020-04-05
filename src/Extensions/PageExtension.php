@@ -54,14 +54,13 @@ class PageExtension extends DataExtension
                 ->setItemRequestClass(VersionedGridFieldItemRequest::class);
 
             $multiClass = new GridFieldAddNewMultiClass();
+
             $multiClass->setClasses(Config::inst()->get(PageExtension::class, 'available_blocks'));
 
             $config->addComponent($multiClass);
 
             $addExisting = $config->getComponentByType(GridFieldAddExistingAutocompleter::class);
-            $addExisting->setSearchFields([
-                'Title:PartialMatch'
-            ]);
+            $addExisting->setSearchFields(['Title:PartialMatch' ]);
 
             $config->addComponent(new GridFieldSortableRows('SortOrder'));
 
@@ -89,16 +88,15 @@ class PageExtension extends DataExtension
 
     public function setBlocksParent()
     {
-        foreach($this->owner->ContentBlocks() as $block) {
-            $published = $block->isPublished();            
+        foreach ($this->owner->ContentBlocks() as $block) {
+            $published = $block->isPublished();
             $block->ParentPageID = $this->owner->ID;
             $block->write();
             if ($published) {
                 $block->publishSingle();
             }
-        }    
+        }
     }
-
 }
 
 class PageControllerExtension extends Extension
@@ -117,5 +115,4 @@ class PageControllerExtension extends Extension
 
         return $this->owner->redirect($this->owner->Link());
     }
-
 }

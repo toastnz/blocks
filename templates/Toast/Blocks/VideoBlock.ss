@@ -1,9 +1,10 @@
+<%----------------------------------------------------------------
+Video Block
+----------------------------------------------------------------%>
+
 <section class="videoBlock block">
-    <div class="videoBlock__wrap row">
-        <div class="column">
-            <a href="#" data-video="$Video" style="background-image: url('<% if $ThumbnailID %>$Thumbnail.URL<% else %>$Video.ThumbnailURL<% end_if %>');" class="videoBlock__wrap__media [ js-video-modal ]">
-                $SVG('play')
-            </a>
-        </div>
-    </div>
+    <a class="videoBlock__wrap  [ js-video-modal ]" data-video-id="$Video" data-video-type="youtube">
+        <div href="#" class="videoBlock__wrap__background" style="background-image: url('<% if $ThumbnailID %>$Thumbnail.focusFill(1920,1080).URL<% else %>$Video.ThumbnailURL<% end_if %>');"></div>
+        <div class="videoBlock__wrap__icon">$SVG('play')</div>
+    </a>
 </section>

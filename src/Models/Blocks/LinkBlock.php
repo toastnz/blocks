@@ -20,8 +20,6 @@ class LinkBlock extends Block
     private static $plural_name = 'Links';
 
     private static $db = [
-        'Heading' => 'Varchar(255)',
-        'Content' => 'HTMLText',
         'Columns' => 'Enum("2, 3, 4", "2")'
     ];
 
@@ -34,10 +32,7 @@ class LinkBlock extends Block
         $fields = parent::getCMSFields();
 
         $fields->addFieldsToTab('Root.Main', [
-            TextField::create('Heading', 'Heading'),
-            HTMLEditorField::create('Content', 'Content')
-                ->setRows(15),
-            DropdownField::create('Columns', 'Columns', singleton('Toast\Blocks\LinkBlock')->dbObject('Columns')->enumValues()),
+            DropdownField::create('Columns', 'How many columns across', singleton('Toast\Blocks\LinkBlock')->dbObject('Columns')->enumValues()),
         ]);
 
         if ($this->ID) {
@@ -53,7 +48,7 @@ class LinkBlock extends Block
                 $this->owner->Items(),
                 $linkConfig
             );    
-            $fields->addFieldToTab('Root.Items', $linkBlockGridField);
+            $fields->addFieldToTab('Root.Main', $linkBlockGridField);
         }
 
         return $fields;

@@ -58,29 +58,27 @@ class Block extends DataObject
     {
         $statIcon = self::config()->get('icon');
 
-        $themeColour = Config::inst()->get(self::class, 'theme_color') ?: '#0074ae';
-
         if (!empty($statIcon) && file_exists(Director::baseFolder() . '/' . $statIcon)) {
             return DBField::create_field('HTMLText', '
-                <div title="' . $this->i18n_singular_name() . '" style="margin: 0 auto;width:25px; height:25px; white-space:nowrap; background-color: ' . $themeColour . ';">
+                <div title="' . $this->i18n_singular_name() . '" style="margin: 0 auto;width:50px; height:50px; white-space:nowrap;">
                     <img style="width:100%;height:100%;display:inline-block !important" src="' . $statIcon . '">
                 </div>
-                <span style="color:' . $themeColour . ';line-height:10px;text-align:center;display:block;margin:8px 0 0;padding:0;font-size:10px;text-transform:uppercase;opacity:0.7">' . $this->i18n_singular_name() . '</span>
+                <span style="color:#377dff;display:block;line-height:10px;text-align:center;margin:0px 0 0;padding:0;font-size:10px;text-transform:uppercase;">' . $this->i18n_singular_name() . '</span>
             ');
         }
 
         $path = TOAST_BLOCKS_DIR . '/images/';
-        $icon = $path . strtolower(str_replace(' ', '', $this->i18n_singular_name())) . '.png';
+        $icon = $path . strtolower(str_replace(' ', '', $this->i18n_singular_name())) . '.svg';
 
         if (!file_exists(Director::baseFolder() . '/' . $icon)) {
-            $icon = $path . 'text.png';
+            $icon = $path . 'text.svg';
         }
 
         return DBField::create_field('HTMLText', '
-            <div title="' . $this->i18n_singular_name() . '" style="margin: 0 auto;width:25px; height:25px; white-space:nowrap; background-color: ' . $themeColour . ';">
+            <div title="' . $this->i18n_singular_name() . '" style="margin: 0 auto;width:50px; height:50px; white-space:nowrap; ">
                 <img style="width:100%;height:100%;display:inline-block !important" src="' . $icon . '">
             </div>
-            <span style="color:' . $themeColour . ';line-height:10px;text-align:center;display:block;margin:8px 0 0;padding:0;font-size:10px;text-transform:uppercase;opacity:0.7">' . $this->i18n_singular_name() . '</span>
+            <span style="color:#377dff;display:block;line-height:10px;text-align:center;margin:0px 0 0;padding:0;font-size:10px;text-transform:uppercase;">' . $this->i18n_singular_name() . '</span>
         ');
     }
 
@@ -105,11 +103,11 @@ class Block extends DataObject
                 ReadonlyField::create('BlockLink', 'Block link', $this->AbsoluteLink()),
                 ReadonlyField::create('Shortcode', 'Shortcode', '[block,id=' . $this->ID . ']')
 
-                
-            ]);                
+
+            ]);
         }
 
-        $fields->addFieldsToTab('Root.Main', [            
+        $fields->addFieldsToTab('Root.Main', [
             TextField::create('Title', 'Title')
                 ->setDescription('Title used for internal reference only and does not appear on the site.')
         ]);
@@ -322,7 +320,4 @@ class Block extends DataObject
 
         return true;
     }
-
-
 }
-

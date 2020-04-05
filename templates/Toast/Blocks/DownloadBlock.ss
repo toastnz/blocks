@@ -20,7 +20,7 @@ Download Block
                             </div>
 
                             <div class="downloadBlock__wrap__list__item__details">
-                                <h5 class="downloadBlock__wrap__list__item__details__title">{$Title}</h5>
+                                <h6 class="downloadBlock__wrap__list__item__details__title">{$Title}</h6>
 
                                 <% if $Up.Summary %>
                                     <div class="downloadBlock__wrap__list__item__details__summary">
@@ -28,7 +28,7 @@ Download Block
                                     </div>
                                 <% end_if %>
 
-                                <p class="downloadBlock__wrap__list__item__details">{$Extension.upperCase} {$Size}</p>
+                                <p class="downloadBlock__wrap__list__item__details__extension">{$Extension.upperCase} {$Size}</p>
                             </div>
                                 
                         </a>

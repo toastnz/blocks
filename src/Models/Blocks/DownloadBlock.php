@@ -12,6 +12,7 @@ use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 use SilverStripe\Forms\GridField\GridFieldAddExistingAutoCompleter;
+use SilverStripe\Forms\LiteralField;
 
 class DownloadBlock extends Block
 {

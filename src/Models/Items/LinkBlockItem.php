@@ -2,13 +2,15 @@
 
 namespace Toast\Blocks\Items;
 
-use Sheadawson\Linkable\Forms\LinkField;
-use Sheadawson\Linkable\Models\Link;
-use SilverStripe\AssetAdmin\Forms\UploadField;
+use Toast\Blocks\LinkBlock;
+use SilverStripe\Assets\File;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
-use Toast\Blocks\LinkBlock;
+use Sheadawson\Linkable\Models\Link;
+use SilverStripe\Forms\TextareaField;
+use Sheadawson\Linkable\Forms\LinkField;
+use SilverStripe\AssetAdmin\Forms\UploadField;
 
 class LinkBlockItem extends BlockItem
 {
@@ -17,20 +19,22 @@ class LinkBlockItem extends BlockItem
     private static $db = [
         'SortOrder' => 'Int',
         'Title' => 'Varchar(255)',
+        'Summary' => 'Text',
     ];
 
     private static $has_one = [
-        'Link' => Link::class,
-        'Image' => Image::class,
+        'Link'   => Link::class,
+        'Image'  => Image::class,
+        'Icon'   => File::class,
         'Parent' => LinkBlock::class
     ];
 
     private static $summary_fields = [
-        'Image.CMSThumbnail' => 'Thumbnail',
         'Title' => 'Title',
     ];
     private static $owns = [
-        'Image'
+        'Icon',
+        'Image',
     ];
 
     public function getCMSFields()
@@ -38,14 +42,16 @@ class LinkBlockItem extends BlockItem
         $fields = parent::getCMSFields();
 
         $fields->addFieldsToTab('Root.Main', [
+            UploadField::create('Icon', 'SVG Icon')
+                ->setAllowedExtensions(['svg'])
+                ->setFolderName('Uploads/Blocks'),
+            UploadField::create('Image', 'Thumbnail')
+                ->setFolderName('Uploads/Blocks'),
             TextField::create('Title', 'Title'),
+            TextareaField::create('Summary', 'Summary'),
             LinkField::create('LinkID', 'Link'),
-            UploadField::create('Image', 'Image')
-                ->setDescription('Ideal size at least 510px * 510px')
-                ->setFolderName('Uploads/Blocks')
         ]);
 
         return $fields;
     }
-
 }
