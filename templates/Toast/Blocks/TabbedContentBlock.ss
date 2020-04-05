@@ -1,20 +1,25 @@
 <% if $Tabs %>
-    <section class="tabBlock contentBlock [ js-tabs ]">
-        <div class="tabBlock__wrap row">
-            <ul class="tabBlock__wrap__tabs unstyled column xmd-4 lg-3">
-                <% loop $Tabs %>
-                    <li class="tabBlock__wrap__tabs__option">
-                        <a href="#" class="tabBlock__wrap__tabs__option__link [ js-tabs--link <% if $First %>js-active<% end_if %> ]">$Title.XML</a>
-                    </li>
-                <% end_loop %>
-            </ul>
-            <div class="tabBlock__wrap__content column xmd-8 lg-9">
-                <% loop $Tabs %>
-                    <div class="tabBlock__wrap__content__item [ js-tabs--item <% if $First %>js-active<% end_if %> ]">
-                        $Content
-                    </div>
-                <% end_loop %>
-            </div>
+<section class="tabBlock block [ js-tabs ]">
+    <div class="tabBlock__wrap">
+
+        <div class="tabBlock__wrap__tabs">
+            
+            <div class="tabBlock__wrap__tabs__indicator [ js-tabbed-indicator ]"></div>
+            
+            <% loop $Tabs %>
+                <a href="#" class="tabBlock__wrap__tabs__item [ js-tabs-link ] <% if $First %>active<% end_if %>">
+                    <h6>$Title.XML</h6>
+                </a>
+            <% end_loop %>
         </div>
-    </section>
+
+        <div class="tabBlock__wrap__content">
+            <% loop $Tabs %>
+            <div class="tabBlock__wrap__content__item [ js-tabs-item ] <% if $First %>active<% end_if %>">
+                $Content
+            </div>
+            <% end_loop %>
+        </div>
+    </div>
+</section>
 <% end_if %>

@@ -37,7 +37,7 @@ class TabbedContentBlock extends Block
                 ->removeComponentsByType(GridFieldAddExistingAutoCompleter::class);
             $gridField = GridField::create('Tabs', 'Tabs', $this->Tabs(), $config);
             
-            $fields->addFieldToTab('Root.Tabs', $gridField);
+            $fields->addFieldToTab('Root.Main', $gridField);
 
         } else {
             $fields->addFieldToTab('Root.Main',
