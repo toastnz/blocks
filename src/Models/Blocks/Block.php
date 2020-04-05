@@ -100,10 +100,8 @@ class Block extends DataObject
 
         if ($this->ID) {
             $fields->addFieldsToTab('Root.More', [
-                ReadonlyField::create('BlockLink', 'Block link', $this->AbsoluteLink()),
+                LiteralField::create('BlockLink', 'Block Link <br><a href="' . $this->AbsoluteLink() . '" target="_blank">' . $this->AbsoluteLink() . '</a><hr>'),
                 ReadonlyField::create('Shortcode', 'Shortcode', '[block,id=' . $this->ID . ']')
-
-
             ]);
         }
 

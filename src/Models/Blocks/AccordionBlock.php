@@ -39,7 +39,7 @@ class AccordionBlock extends Block
         $grid = GridField::create('Items', 'Accordion Items', $this->Items(), $config);
 
         if ($this->ID) {
-            $fields->addFieldToTab('Root.Items', $grid);
+            $fields->addFieldToTab('Root.Main', $grid);
         } else {
             $fields->addFieldToTab('Root.Main', LiteralField::create('', '<div class="message notice">Save this block to show additional options.</div>'));
         }

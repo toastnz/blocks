@@ -44,7 +44,7 @@ class ChildLinkBlock extends Block
     {
         $output = ArrayList::create();
         if ($page = \Page::get()->filter('ContentBlocks.ID', $this->ID)->first()) {
-            foreach($page->Children() as $child) {
+            foreach ($page->Children() as $child) {
                 $child->Blocks__ContentSummary = $child->{self::contentField()};
                 $output->push($child);
             }
@@ -59,5 +59,4 @@ class ChildLinkBlock extends Block
         }
         return self::$content_field;
     }
-
 }

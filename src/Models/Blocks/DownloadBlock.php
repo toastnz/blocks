@@ -37,7 +37,7 @@ class DownloadBlock extends Block
                 ->addComponents(new GridFieldDeleteAction())
                 ->addComponents(GridFieldOrderableRows::create('SortOrder'));                
             $grid = GridField::create('Items', 'Files', $this->Items(), $config);
-            $fields->addFieldToTab('Root.Items', $grid);
+            $fields->addFieldToTab('Root.Main', $grid);
 
         } else {
             $fields->addFieldToTab('Root.Main', LiteralField::create('', '<div class="message notice">Save this block to show additional options.</div>'));
