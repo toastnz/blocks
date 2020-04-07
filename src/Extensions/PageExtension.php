@@ -62,7 +62,7 @@ class PageExtension extends DataExtension
             $addExisting = $config->getComponentByType(GridFieldAddExistingAutocompleter::class);
             $addExisting->setSearchFields(['Title:PartialMatch' ]);
 
-            $config->addComponent(new GridFieldSortableRows('SortOrder'));
+            $config->addComponent(new GridFieldOrderableRows('SortOrder'));
 
             $gridField = GridField::create(
                 'ContentBlocks',
@@ -89,12 +89,9 @@ class PageExtension extends DataExtension
     public function setBlocksParent()
     {
         foreach ($this->owner->ContentBlocks() as $block) {
-            $published = $block->isPublished();
-            $block->ParentPageID = $this->owner->ID;
-            $block->write();
-            if ($published) {
-                $block->publishSingle();
-            }
+            $this->owner->ContentBlocks()->add($block, [
+                'ParentPageID' => $this->owner->ID
+            ]);
         }
     }
 }

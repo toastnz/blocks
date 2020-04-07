@@ -1,9 +1,9 @@
 <% if $Content %>
-<section class="textBlock block">
-	<div class="textBlock__wrap row">
-		<div class="column">
-			{$Content}
+	<section class="textBlock block">
+		<div class="textBlock__wrap row">
+			<div class="column">
+				$Content
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
 <% end_if %>

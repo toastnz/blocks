@@ -87,7 +87,7 @@ class Block extends DataObject
         return $this->getIconForCMS();
     }
 
-    function forTemplate()
+    public function forTemplate()
     {
         $template = $this->ClassName;
         $this->extend('updateBlockTemplate', $template);
@@ -318,4 +318,5 @@ class Block extends DataObject
 
         return true;
     }
+
 }
