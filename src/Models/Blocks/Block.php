@@ -64,7 +64,7 @@ class Block extends DataObject
                 <div title="' . $this->i18n_singular_name() . '" style="margin: 0 auto;width:50px; height:50px; white-space:nowrap;">
                     <img style="width:100%;height:100%;display:inline-block !important" src="' . $statIcon . '">
                 </div>
-                <span style="color:#377dff;display:block;line-height:10px;text-align:center;margin:0px 0 0;padding:0;font-size:10px;text-transform:uppercase;">' . $this->i18n_singular_name() . '</span>
+                <span style="font-weight:bold;color:#377cff;display:block;line-height:10px;text-align:center;margin:0px 0 0;padding:0;font-size:10px;text-transform:uppercase;">' . $this->i18n_singular_name() . '</span>
             ');
         }
 
@@ -79,7 +79,7 @@ class Block extends DataObject
             <div title="' . $this->i18n_singular_name() . '" style="margin: 0 auto;width:50px; height:50px; white-space:nowrap; ">
                 <img style="width:100%;height:100%;display:inline-block !important" src="' . $icon . '">
             </div>
-            <span style="color:#377dff;display:block;line-height:10px;text-align:center;margin:0px 0 0;padding:0;font-size:10px;text-transform:uppercase;">' . $this->i18n_singular_name() . '</span>
+            <span style="font-weight:bold;color:#377cff;display:block;line-height:10px;text-align:center;margin:0px 0 0;padding:0;font-size:10px;text-transform:uppercase;">' . $this->i18n_singular_name() . '</span>
         ');
     }
 
