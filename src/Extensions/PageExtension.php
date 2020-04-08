@@ -37,8 +37,7 @@ class PageExtension extends DataExtension
 
     private static $many_many_extraFields = [
         'ContentBlocks' => [
-            'SortOrder' => 'Int',
-            'ParentPageID' => 'Int'
+            'SortOrder' => 'Int'
         ]
     ];
 
@@ -72,26 +71,6 @@ class PageExtension extends DataExtension
             );
 
             $fields->addFieldToTab('Root.Blocks', $gridField);
-        }
-    }
-
-
-    public function onAfterWrite()
-    {
-        $this->setBlocksParent();
-    }
-
-    public function onAfterPublish()
-    {
-        $this->setBlocksParent();
-    }
-
-    public function setBlocksParent()
-    {
-        foreach ($this->owner->ContentBlocks() as $block) {
-            $this->owner->ContentBlocks()->add($block, [
-                'ParentPageID' => $this->owner->ID
-            ]);
         }
     }
 

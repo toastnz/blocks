@@ -25,6 +25,7 @@ use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_Base;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
+use SilverStripe\CMS\Controllers\CMSPageEditController;
 
 class Block extends DataObject
 {
@@ -273,8 +274,14 @@ class Block extends DataObject
 
     public function getParentPage()
     {
-        if ($this->ParentPageID) {
-            return SiteTree::get()->byID($this->ParentPageID);
+        if ($controller = Controller::curr()) {
+            if (!$controller instanceof CMSPageEditController) {
+                if ($data = $controller->data()) {
+                    if ($data->ID) {
+                        return SiteTree::get()->byID($data->ID);
+                    }
+                }
+            }
         }
     }
 

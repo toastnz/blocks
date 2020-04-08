@@ -6,6 +6,8 @@ use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\UserForms\Model\UserDefinedForm;
+use SilverStripe\Control\Controller;
+use SilverStripe\UserForms\Form\UserForm;
 
 class UserFormBlock extends Block
 {
@@ -30,12 +32,17 @@ class UserFormBlock extends Block
     {
         if ($page = $this->getParentPage()) {
             if ($page->ClassName == UserDefinedForm::class) {
-                return DBField::create_field(DBHTMLText::class, $page->UserDefinedForm);
+                $controller = Controller::curr();
+                $form = UserForm::create($controller, 'Form_' . $page->ID);
+                $form->setFormAction(Controller::join_links($page->Link(), 'Form'));
+                $controller->generateConditionalJavascript();
+                return $form;        
             }
         }
     }
 
 
+    
     public function getContentSummary()
     {
         if ($page = $this->getParentPage()) {
