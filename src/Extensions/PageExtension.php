@@ -94,6 +94,8 @@ class PageExtension extends DataExtension
             ]);
         }
     }
+
+
 }
 
 class PageControllerExtension extends Extension
@@ -112,4 +114,5 @@ class PageControllerExtension extends Extension
 
         return $this->owner->redirect($this->owner->Link());
     }
+
 }
