@@ -57,23 +57,7 @@ class Block extends DataObject
 
     public function getIconForCMS()
     {
-        $statIcon = self::config()->get('icon');
-
-        if (!empty($statIcon) && file_exists(Director::baseFolder() . '/' . $statIcon)) {
-            return DBField::create_field('HTMLText', '
-                <div title="' . $this->i18n_singular_name() . '" style="margin: 0 auto;width:50px; height:50px; white-space:nowrap;">
-                    <img style="width:100%;height:100%;display:inline-block !important" src="' . $statIcon . '">
-                </div>
-                <span style="font-weight:bold;color:#377cff;display:block;line-height:10px;text-align:center;margin:0px 0 0;padding:0;font-size:10px;text-transform:uppercase;">' . $this->i18n_singular_name() . '</span>
-            ');
-        }
-
-        $path = TOAST_BLOCKS_DIR . '/images/';
-        $icon = $path . strtolower(str_replace(' ', '', $this->i18n_singular_name())) . '.svg';
-
-        if (!file_exists(Director::baseFolder() . '/' . $icon)) {
-            $icon = $path . 'text.svg';
-        }
+        $icon = str_replace('[resources]', RESOURCES_DIR . '/toastnz/blocks', self::config()->get('icon') ?: '[resources]/images/text.svg');
 
         return DBField::create_field('HTMLText', '
             <div title="' . $this->i18n_singular_name() . '" style="margin: 0 auto;width:50px; height:50px; white-space:nowrap; ">
@@ -81,6 +65,7 @@ class Block extends DataObject
             </div>
             <span style="font-weight:bold;color:#377cff;display:block;line-height:10px;text-align:center;margin:0px 0 0;padding:0;font-size:10px;text-transform:uppercase;">' . $this->i18n_singular_name() . '</span>
         ');
+
     }
 
     public function IconForCMS()

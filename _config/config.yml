@@ -10,10 +10,6 @@ Toast\Blocks\Extensions\PageExtension:
   available_blocks:
     - Toast\Blocks\TextBlock
 
-SilverStripe\Admin\LeftAndMain:
-  extra_requirements_css:
-    # - blocks/css/blocks.css
-
 SilverStripe\Assets\File:
   extensions:
     - Toast\Blocks\Extensions\FileExtension
@@ -23,47 +19,47 @@ SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest:
     CmsActionsExtension: Toast\Blocks\Extensions\CmsActionsExtension
 
 Toast\Blocks\TextBlock:
-  icon: 'blocks/images/text.svg'
+  icon: '[resources]/images/text.svg'
 
 Toast\Blocks\AccordionBlock:
-  icon: 'blocks/images/accordion.svg'
+  icon: '[resources]/images/accordion.svg'
 
 Toast\Blocks\ChildLinkBlock:
-  icon: 'blocks/images/link.svg'
+  icon: '[resources]/images/link.svg'
   content_field: 'Content'
 
 Toast\Blocks\ColumnBlock:
-  icon: 'blocks/images/splitblock.svg'
+  icon: '[resources]/images/splitblock.svg'
 
 Toast\Blocks\DownloadBlock:
-  icon: 'blocks/images/download.svg'
+  icon: '[resources]/images/download.svg'
 
 Toast\Blocks\GalleryBlock:
-  icon: 'blocks/images/gallery.svg'
+  icon: '[resources]/images/gallery.svg'
 
 Toast\Blocks\HeroBlock:
-  icon: 'blocks/images/hero.svg'
+  icon: '[resources]/images/hero.svg'
 
 Toast\Blocks\ImageBlock:
-  icon: 'blocks/images/image.svg'
+  icon: '[resources]/images/image.svg'
 
 Toast\Blocks\LinkBlock:
-  icon: 'blocks/images/link.svg'
+  icon: '[resources]/images/link.svg'
 
 Toast\Blocks\NewsBlock:
-  icon: 'blocks/images/news.svg'
+  icon: '[resources]/images/news.svg'
 
 Toast\Blocks\PercentageBlock:
-  icon: 'blocks/images/.svg'
+  icon: '[resources]/images/.svg'
 
 Toast\Blocks\TabbedContentBlock:
-  icon: 'blocks/images/statistic.svg'
+  icon: '[resources]/images/statistic.svg'
 
 Toast\Blocks\TestimonialBlock:
-  icon: 'blocks/images/testimonial.svg'
+  icon: '[resources]/images/testimonial.svg'
 
 Toast\Blocks\VideoBlock:
-  icon: 'blocks/images/video.svg'
+  icon: '[resources]/images/video.svg'
 
 Toast\Blocks\SplitBlock:
-  icon: 'blocks/images/splitblock.svg'
+  icon: '[resources]/images/splitblock.svg'
