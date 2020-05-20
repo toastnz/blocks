@@ -261,10 +261,13 @@ class Block extends DataObject
     {
         if ($controller = Controller::curr()) {
             if (!$controller instanceof CMSPageEditController) {
-                if ($data = $controller->data()) {
-                    if ($data->ID) {
-                        return SiteTree::get()->byID($data->ID);
+                try {
+                    if ($data = $controller->data()) {
+                        if ($data->ID) {
+                            return SiteTree::get()->byID($data->ID);
+                        }
                     }
+                } catch (\Exception $e) {                    
                 }
             }
         }
