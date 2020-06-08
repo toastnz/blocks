@@ -43,6 +43,9 @@ Toast\Blocks\HeroBlock:
 Toast\Blocks\ImageBlock:
   icon: '[resources]/images/image.svg'
 
+Toast\Blocks\InstagramBlock:
+  icon: '[resources]/images/social.svg'
+
 Toast\Blocks\LinkBlock:
   icon: '[resources]/images/link.svg'
 
@@ -50,7 +53,7 @@ Toast\Blocks\NewsBlock:
   icon: '[resources]/images/news.svg'
 
 Toast\Blocks\PercentageBlock:
-  icon: '[resources]/images/.svg'
+  icon: '[resources]/images/percentage.svg'
 
 Toast\Blocks\TabbedContentBlock:
   icon: '[resources]/images/statistic.svg'
