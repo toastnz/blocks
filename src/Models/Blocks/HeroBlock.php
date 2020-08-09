@@ -32,16 +32,18 @@ class HeroBlock extends Block
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
 
-        $fields->addFieldsToTab('Root.Main', [
-            HTMLEditorField::create('Content', 'Content')->setRows(5),
-            CheckboxField::create('FullWidth', 'Extend content to use full width'),
-            UploadField::create('BackgroundImage', 'Background Image')
-                ->setFolderName('Uploads/Blocks')
-        ]);
+            $fields->addFieldsToTab('Root.Main', [
+                HTMLEditorField::create('Content', 'Content')->setRows(5),
+                CheckboxField::create('FullWidth', 'Extend content to use full width'),
+                UploadField::create('BackgroundImage', 'Background Image')
+                    ->setFolderName('Uploads/Blocks')
+            ]);
 
-        return $fields;
+        });
+
+        return parent::getCMSFields();
     }
 
 }

@@ -46,14 +46,16 @@ class AccordionItem extends BlockItem
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
 
-        $fields->addFieldsToTab('Root.Main', [
-            TextField::create('Title', 'Title'),
-            HTMLEditorField::create('Content', 'Content')
-        ]);
+            $fields->addFieldsToTab('Root.Main', [
+                TextField::create('Title', 'Title'),
+                HTMLEditorField::create('Content', 'Content')
+            ]);
 
-        return $fields;
+        });
+
+        return parent::getCMSFields();
     }
 
     public function onBeforeWrite()

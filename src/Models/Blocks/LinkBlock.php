@@ -29,28 +29,32 @@ class LinkBlock extends Block
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
 
-        $fields->addFieldsToTab('Root.Main', [
-            DropdownField::create('Columns', 'How many columns across', singleton('Toast\Blocks\LinkBlock')->dbObject('Columns')->enumValues()),
-        ]);
+            $fields->removeByName('Items');
 
-        if ($this->ID) {
-            $linkConfig = GridFieldConfig_RelationEditor::create(10);
-            $linkConfig->addComponent(GridFieldOrderableRows::create('SortOrder'))
-                ->removeComponentsByType(GridFieldDeleteAction::class)
-                ->addComponent(new GridFieldDeleteAction(false))
-                ->removeComponentsByType('GridFieldAddExistingAutoCompleter');
-    
-            $linkBlockGridField = GridField::create(
-                'Items',
-                'Link Block Items',
-                $this->owner->Items(),
-                $linkConfig
-            );    
-            $fields->addFieldToTab('Root.Main', $linkBlockGridField);
-        }
+            $fields->addFieldsToTab('Root.Main', [
+                DropdownField::create('Columns', 'How many columns across', singleton('Toast\Blocks\LinkBlock')->dbObject('Columns')->enumValues()),
+            ]);
 
-        return $fields;
+            if ($this->ID) {
+                $linkConfig = GridFieldConfig_RelationEditor::create(10);
+                $linkConfig->addComponent(GridFieldOrderableRows::create('SortOrder'))
+                    ->removeComponentsByType(GridFieldDeleteAction::class)
+                    ->addComponent(new GridFieldDeleteAction(false))
+                    ->removeComponentsByType('GridFieldAddExistingAutoCompleter');
+        
+                $linkBlockGridField = GridField::create(
+                    'Items',
+                    'Link Block Items',
+                    $this->owner->Items(),
+                    $linkConfig
+                );    
+                $fields->addFieldToTab('Root.Main', $linkBlockGridField);
+            }
+
+        });
+
+        return parent::getCMSFields();
     }
 }

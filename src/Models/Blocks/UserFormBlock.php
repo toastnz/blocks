@@ -19,13 +19,15 @@ class UserFormBlock extends Block
 
     public function getCMSFields()
     {        
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
 
-        $fields->insertAfter('Title',
-            LiteralField::create('', '<div class="message warning"><strong>Note:</strong><br />Form must be configured from the <strong>Form Fields</strong> page tab and only applies to <strong>User Defined Form</strong> page types.</div>')
-        );
+            $fields->insertAfter('Title',
+                LiteralField::create('', '<div class="message warning"><strong>Note:</strong><br />Form must be configured from the <strong>Form Fields</strong> page tab and only applies to <strong>User Defined Form</strong> page types.</div>')
+            );
 
-        return $fields;
+        });
+
+        return parent::getCMSFields();
     }
 
     public function Form()

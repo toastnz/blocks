@@ -10,16 +10,18 @@ class BlockItem extends DataObject
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
 
-        $fields->removeByName([
-            'ParentID',
-            'SortOrder',
-            'FileTracking',
-            'LinkTracking'
-        ]);
+            $fields->removeByName([
+                'ParentID',
+                'SortOrder',
+                'FileTracking',
+                'LinkTracking'
+            ]);
 
-        return $fields;
+        });
+
+        return parent::getCMSFields();
     }
 
 }

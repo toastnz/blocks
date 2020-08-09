@@ -36,20 +36,20 @@ class VideoBlock extends Block
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
 
-        $fields->addFieldsToTab('Root.Main', [
-            TextField::create('Caption', 'Caption'),
-            VideoLinkField::create('Video')
-                ->showPreview(500),
-            UploadField::create('Thumbnail', 'Override default Thumbnail')
-                ->setFolderName('Uploads/Blocks')
-                ->setDescription('Will automatically use YouTube thumbnail if this image is not uploaded. Ideal size: 960x540')
-        ]);
+            $fields->addFieldsToTab('Root.Main', [
+                TextField::create('Caption', 'Caption'),
+                VideoLinkField::create('Video')
+                    ->showPreview(500),
+                UploadField::create('Thumbnail', 'Override default Thumbnail')
+                    ->setFolderName('Uploads/Blocks')
+                    ->setDescription('Will automatically use YouTube thumbnail if this image is not uploaded. Ideal size: 960x540')
+            ]);
 
-        $fields = parent::getCMSFields();
+        });
 
-        return $fields;
+        return parent::getCMSFields();
     }
 
     public function getCMSValidator()

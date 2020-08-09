@@ -42,16 +42,18 @@ class DownloadBlockItem extends BlockItem
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
         
-        $fields->addFieldsToTab('Root.Main', [
-            TextField::create('Title', 'Title'),
-            TextareaField::create('Summary', 'Summary'),
-            UploadField::create('File', 'File')
-                ->setFolderName('Uploads/Blocks/Files')
-        ]);
+            $fields->addFieldsToTab('Root.Main', [
+                TextField::create('Title', 'Title'),
+                TextareaField::create('Summary', 'Summary'),
+                UploadField::create('File', 'File')
+                    ->setFolderName('Uploads/Blocks/Files')
+            ]);
 
-        return $fields;
+        });
+
+        return parent::getCMSFields();
     }
 
     public function getCMSValidator()

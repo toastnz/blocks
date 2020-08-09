@@ -28,23 +28,27 @@ class AccordionBlock extends Block
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
 
-        $config = GridFieldConfig_RelationEditor::create(50)
-            ->removeComponentsByType(GridFieldAddExistingAutoCompleter::class)
-            ->removeComponentsByType(GridFieldDeleteAction::class)
-            ->addComponents(new GridFieldDeleteAction())
-            ->addComponents(GridFieldOrderableRows::create('SortOrder'));
+            $fields->removeByName('Items');
 
-        $grid = GridField::create('Items', 'Accordion Items', $this->Items(), $config);
+            if ($this->ID) {
+                $config = GridFieldConfig_RelationEditor::create(50)
+                    ->removeComponentsByType(GridFieldAddExistingAutoCompleter::class)
+                    ->removeComponentsByType(GridFieldDeleteAction::class)
+                    ->addComponents(new GridFieldDeleteAction())
+                    ->addComponents(GridFieldOrderableRows::create('SortOrder'));
 
-        if ($this->ID) {
-            $fields->addFieldToTab('Root.Main', $grid);
-        } else {
-            $fields->addFieldToTab('Root.Main', LiteralField::create('', '<div class="message notice">Save this block to show additional options.</div>'));
-        }
+                $grid = GridField::create('Items', 'Accordion Items', $this->Items(), $config);
 
-        return $fields;
+                $fields->addFieldToTab('Root.Main', $grid);
+            } else {
+                $fields->addFieldToTab('Root.Main', LiteralField::create('', '<div class="message notice">Save this block to show additional options.</div>'));
+            }
+
+        });
+
+        return parent::getCMSFields();
     }
 
     public function getContentSummary()

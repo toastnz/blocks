@@ -39,15 +39,17 @@ class ContentTabBlockItem extends BlockItem
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
 
-        $fields->addFieldsToTab('Root.Main', [
-            TextField::create('Title', 'Title'),
-            HTMLEditorField::create('Content', 'Content')
-                ->setRows(15)
-        ]);
+            $fields->addFieldsToTab('Root.Main', [
+                TextField::create('Title', 'Title'),
+                HTMLEditorField::create('Content', 'Content')
+                    ->setRows(15)
+            ]);
 
-        return $fields;
+        });
+
+        return parent::getCMSFields();
     }
 
     public function getContentSummary()

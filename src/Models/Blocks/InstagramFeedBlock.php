@@ -31,18 +31,20 @@ class InstagramFeedBlock extends Block
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
 
-        $fields->addFieldsToTab('Root.Main', [
-            TextField::create('InstagramID', 'Instagram Page')
-                ->setAttribute('placeholder', 'eg. newzealand')
-                ->setDescription('Only the ID portion of the URL (do not include https://instagram.com/)'),
-            NumericField::create('TotalItems', 'Number of posts to show')
-                ->setDescription('Defaults to 5'),
-            HTMLEditorField::create('Content', 'Content')
-        ]);
+            $fields->addFieldsToTab('Root.Main', [
+                TextField::create('InstagramID', 'Instagram Page')
+                    ->setAttribute('placeholder', 'eg. newzealand')
+                    ->setDescription('Only the ID portion of the URL (do not include https://instagram.com/)'),
+                NumericField::create('TotalItems', 'Number of posts to show')
+                    ->setDescription('Defaults to 5'),
+                HTMLEditorField::create('Content', 'Content')
+            ]);
 
-        return $fields;
+        });
+
+        return parent::getCMSFields();
     }
 
     public function getCMSValidator()

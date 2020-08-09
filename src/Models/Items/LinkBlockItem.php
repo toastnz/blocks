@@ -39,19 +39,21 @@ class LinkBlockItem extends BlockItem
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
 
-        $fields->addFieldsToTab('Root.Main', [
-            UploadField::create('Icon', 'SVG Icon')
-                ->setAllowedExtensions(['svg'])
-                ->setFolderName('Uploads/Blocks'),
-            UploadField::create('Image', 'Thumbnail')
-                ->setFolderName('Uploads/Blocks'),
-            TextField::create('Title', 'Title'),
-            TextareaField::create('Summary', 'Summary'),
-            LinkField::create('LinkID', 'Link'),
-        ]);
+            $fields->addFieldsToTab('Root.Main', [
+                UploadField::create('Icon', 'SVG Icon')
+                    ->setAllowedExtensions(['svg'])
+                    ->setFolderName('Uploads/Blocks'),
+                UploadField::create('Image', 'Thumbnail')
+                    ->setFolderName('Uploads/Blocks'),
+                TextField::create('Title', 'Title'),
+                TextareaField::create('Summary', 'Summary'),
+                LinkField::create('LinkID', 'Link'),
+            ]);
 
-        return $fields;
+        });
+
+        return parent::getCMSFields();
     }
 }

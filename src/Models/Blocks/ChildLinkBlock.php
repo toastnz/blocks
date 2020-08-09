@@ -29,15 +29,17 @@ class ChildLinkBlock extends Block
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
 
-        $fields->addFieldsToTab('Root.Main', [
-            HTMLEditorField::create('Content', 'Content')
-                ->setRows(15),
-            DropdownField::create('Columns', 'Columns', singleton(self::class)->dbObject('Columns')->enumValues())
-        ]);
+            $fields->addFieldsToTab('Root.Main', [
+                HTMLEditorField::create('Content', 'Content')
+                    ->setRows(15),
+                DropdownField::create('Columns', 'Columns', singleton(self::class)->dbObject('Columns')->enumValues())
+            ]);
 
-        return $fields;
+        });
+
+        return parent::getCMSFields();
     }
 
     public function getItems()

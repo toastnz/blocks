@@ -27,25 +27,27 @@ class TabbedContentBlock extends Block
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
 
-        if ($this->exists()) {
-            $config = GridFieldConfig_RelationEditor::create(50);
-            $config->addComponent(GridFieldOrderableRows::create('SortOrder'))
-                ->removeComponentsByType(GridFieldDeleteAction::class)
-                ->addComponent(new GridFieldDeleteAction())
-                ->removeComponentsByType(GridFieldAddExistingAutoCompleter::class);
-            $gridField = GridField::create('Tabs', 'Tabs', $this->Tabs(), $config);
-            
-            $fields->addFieldToTab('Root.Main', $gridField);
+            if ($this->exists()) {
+                $config = GridFieldConfig_RelationEditor::create(50);
+                $config->addComponent(GridFieldOrderableRows::create('SortOrder'))
+                    ->removeComponentsByType(GridFieldDeleteAction::class)
+                    ->addComponent(new GridFieldDeleteAction())
+                    ->removeComponentsByType(GridFieldAddExistingAutoCompleter::class);
+                $gridField = GridField::create('Tabs', 'Tabs', $this->Tabs(), $config);
+                
+                $fields->addFieldToTab('Root.Main', $gridField);
 
-        } else {
-            $fields->addFieldToTab('Root.Main',
-                LiteralField::create('Notice', '<div class="message notice">Save this block to see more options.</div>')
-            );
-        }
+            } else {
+                $fields->addFieldToTab('Root.Main',
+                    LiteralField::create('Notice', '<div class="message notice">Save this block to see more options.</div>')
+                );
+            }
+        });
 
-        return $fields;
+        return parent::getCMSFields();
+
     }
 
 }

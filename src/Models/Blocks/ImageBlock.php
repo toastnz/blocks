@@ -28,14 +28,18 @@ class ImageBlock extends Block
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
 
-        $fields->addFieldsToTab('Root.Main', [
-            UploadField::create('Image', 'Image')
-                ->setFolderName('Uploads/Blocks')            
-        ]);
+        $this->beforeUpdateCMSFields(function ($fields) {
 
-        return $fields;
+            $fields->addFieldsToTab('Root.Main', [
+                UploadField::create('Image', 'Image')
+                    ->setFolderName('Uploads/Blocks')            
+            ]);
+
+        });
+
+        return parent::getCMSFields();
+
     }
 
     public function getContentSummary()

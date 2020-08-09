@@ -28,22 +28,26 @@ class DownloadBlock extends Block
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
 
-        if ($this->ID) {
-            $config = GridFieldConfig_RelationEditor::create(50)
-                ->removeComponentsByType(GridFieldAddExistingAutoCompleter::class)
-                ->removeComponentsByType(GridFieldDeleteAction::class)
-                ->addComponents(new GridFieldDeleteAction())
-                ->addComponents(GridFieldOrderableRows::create('SortOrder'));                
-            $grid = GridField::create('Items', 'Files', $this->Items(), $config);
-            $fields->addFieldToTab('Root.Main', $grid);
+            $fields->removeByName('Items');
 
-        } else {
-            $fields->addFieldToTab('Root.Main', LiteralField::create('', '<div class="message notice">Save this block to show additional options.</div>'));
-        }
+            if ($this->ID) {
+                $config = GridFieldConfig_RelationEditor::create(50)
+                    ->removeComponentsByType(GridFieldAddExistingAutoCompleter::class)
+                    ->removeComponentsByType(GridFieldDeleteAction::class)
+                    ->addComponents(new GridFieldDeleteAction())
+                    ->addComponents(GridFieldOrderableRows::create('SortOrder'));                
+                $grid = GridField::create('Items', 'Files', $this->Items(), $config);
+                $fields->addFieldToTab('Root.Main', $grid);
 
-        return $fields;
+            } else {
+                $fields->addFieldToTab('Root.Main', LiteralField::create('', '<div class="message notice">Save this block to show additional options.</div>'));
+            }
+        });
+
+        return parent::getCMSFields();
+
     }
 
     public function getContentSummary()

@@ -57,7 +57,8 @@ class Block extends DataObject
 
     public function getIconForCMS()
     {
-        $icon = str_replace('[resources]', RESOURCES_DIR . '/toastnz/blocks', self::config()->get('icon') ?: '[resources]/images/text.svg');
+        $icon = str_replace('[resources]', RESOURCES_DIR . '/vendor/toastnz/blocks', self::config()->get('icon') ?: '[resources]/images/text.svg');
+        $icon = '/' . $icon;
 
         return DBField::create_field('HTMLText', '
             <div title="' . $this->i18n_singular_name() . '" style="margin: 0 auto;width:50px; height:50px; white-space:nowrap; ">
@@ -82,21 +83,23 @@ class Block extends DataObject
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
 
-        if ($this->ID) {
-            $fields->addFieldsToTab('Root.More', [
-                LiteralField::create('BlockLink', 'Block Link <br><a href="' . $this->AbsoluteLink() . '" target="_blank">' . $this->AbsoluteLink() . '</a><hr>'),
-                ReadonlyField::create('Shortcode', 'Shortcode', '[block,id=' . $this->ID . ']')
+            if ($this->ID) {
+                $fields->addFieldsToTab('Root.More', [
+                    LiteralField::create('BlockLink', 'Block Link <br><a href="' . $this->AbsoluteLink() . '" target="_blank">' . $this->AbsoluteLink() . '</a><hr>'),
+                    ReadonlyField::create('Shortcode', 'Shortcode', '[block,id=' . $this->ID . ']')
+                ]);
+            }
+
+            $fields->addFieldsToTab('Root.Main', [
+                TextField::create('Title', 'Title')
+                    ->setDescription('Title used for internal reference only and does not appear on the site.')
             ]);
-        }
 
-        $fields->addFieldsToTab('Root.Main', [
-            TextField::create('Title', 'Title')
-                ->setDescription('Title used for internal reference only and does not appear on the site.')
-        ]);
+        });
 
-        return $fields;
+        return parent::getCMSFields();
     }
 
     public function getContentSummary()

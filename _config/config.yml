@@ -56,7 +56,7 @@ Toast\Blocks\PercentageBlock:
   icon: '[resources]/images/percentage.svg'
 
 Toast\Blocks\TabbedContentBlock:
-  icon: '[resources]/images/statistic.svg'
+  icon: '[resources]/images/tabbedcontent.svg'
 
 Toast\Blocks\TestimonialBlock:
   icon: '[resources]/images/testimonial.svg'
@@ -66,3 +66,4 @@ Toast\Blocks\VideoBlock:
 
 Toast\Blocks\SplitBlock:
   icon: '[resources]/images/splitblock.svg'
+
