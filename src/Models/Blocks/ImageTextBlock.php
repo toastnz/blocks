@@ -58,6 +58,9 @@ class ImageTextBlock extends Block
 
     public function getCMSValidator()
     {
-        return new RequiredFields([Image::class, 'Content']);
+        $required = new RequiredFields([Image::class, 'Content']);
+        $this->extend('updateCMSValidator', $required);
+        return $required;
+
     }
 }

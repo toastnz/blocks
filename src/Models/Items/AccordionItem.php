@@ -70,7 +70,10 @@ class AccordionItem extends BlockItem
 
     public function getCMSValidator()
     {
-        return new RequiredFields(['Heading', 'Content']);
+        $required = new RequiredFields(['Heading', 'Content']);
+        $this->extend('updateCMSValidator', $required);
+        return $required;
+
     }
 
     public function GroupNumber()

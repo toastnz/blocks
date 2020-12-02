@@ -58,9 +58,12 @@ class DownloadBlockItem extends BlockItem
 
     public function getCMSValidator()
     {
-        return new RequiredFields([
+        $required = new RequiredFields([
             'File'
         ]);
+        $this->extend('updateCMSValidator', $required);
+        return $required;
+
     }
 
     public function canView($member = null)
