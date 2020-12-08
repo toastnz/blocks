@@ -47,13 +47,7 @@ class ImageTextBlock extends Block
 
     public function getContentSummary()
     {
-        $content = '';
-
-        if ($this->Image() && $this->Image()->exists()) {
-            $content = $this->Image()->Fit(300, 150)->forTemplate();
-        }
-
-        return DBField::create_field(DBHTMLText::class, $content);
+        return DBField::create_field(DBHTMLText::class, $this->Content)->Summary();
     }
 
     public function getCMSValidator()
