@@ -9,6 +9,7 @@ use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\TextField;
 
 class ImageBlock extends Block
 {
@@ -17,7 +18,11 @@ class ImageBlock extends Block
     private static $singular_name = 'Image';
 
     private static $plural_name = 'Images';
-    
+
+    private static $db = [
+        'Caption' => 'Text',
+    ];
+
     private static $has_one = [
         'Image' => Image::class
     ];
@@ -33,8 +38,10 @@ class ImageBlock extends Block
 
             $fields->addFieldsToTab('Root.Main', [
                 UploadField::create('Image', 'Image')
-                    ->setFolderName('Uploads/Blocks')            
-            ]);
+                    ->setFolderName('Uploads/Blocks'),
+                TextField::create('Caption', 'Caption')
+                    ->setDescription('Optional caption for this image')
+                ]);
 
         });
 
