@@ -1,26 +1,17 @@
 .link-block {
-  &__header,
-  &__wrap {
-    @include clearfix;
-  }
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 
-  &__header {
-    margin-bottom: 4rem;
-
-    &__content {
-      display: block;
-      padding-left: 2rem;
-      padding-right: 2rem;
-      float: left;
-
-      >:last-child {
-        margin-bottom: 0;
-      }
-    }
+  @include media($xmd) {
+    margin-top: 10rem;
+    margin-bottom: 10rem;
   }
 
   &__wrap {
     $row: &;
+    @include clearfix;
+    max-width: $xl;
+    margin: 0 auto;
 
     @include media($xmd) {
       &.xmd-up-2 {
@@ -39,6 +30,7 @@
             width: 33.333333333%;
           }
         }
+      }
     }
 
     &__item {
@@ -59,7 +51,7 @@
           position: relative;
           height: 35rem;
           width: 100%;
-          margin-bottom: 4rem;
+          margin-bottom: 2rem;
         }
 
         &__content {
@@ -69,7 +61,7 @@
           &__heading {
             color: $primary;
             font-weight: bold;
-            margin-bottom: 4rem;
+            margin-bottom: 2rem;
           }
 
           &__body {

@@ -1,10 +1,4 @@
 <section class="link-block contentBlock">
-        <div class="link-block__header">
-            <div class="link-block__header__content">
-                <h3 class="link-block__header__title">Heading</h3>
-            </div>
-        </div>
-
     <div class="link-block__wrap xmd-up-2 lg-up-3">
         <%-- <% loop condition %> --%>
             <div class="link-block__wrap__item">
