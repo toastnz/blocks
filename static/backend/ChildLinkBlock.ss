@@ -10,6 +10,9 @@ $Columns
 
         $Title.XML
         $Image
-        $Blocks__ContentSummary.LimitCharacters(50)
+
+        <% if $Blocks__ContentSummary %>
+            $Blocks__ContentSummary.LimitCharacters(50)
+        <% end_if %>
     <% end_loop %>
 <% end_if %>

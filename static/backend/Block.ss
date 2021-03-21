@@ -1,3 +1,3 @@
 <% if $Content %>
-    $Content
+	$Content
 <% end_if %>

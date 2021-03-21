@@ -1,8 +1,9 @@
 <% if $Testimonials.Count %>
     <% if $ShowSlider %><% end_if %>
-    
+
     <% loop $Testimonials %>
         $Testimonial.XML
+
         <% if $Up.ShowNameAndLocation %>
             $Title.XML
             $Location.XML

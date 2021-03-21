@@ -1,4 +1,4 @@
 <% loop $Items %>
-    $Title
-    $Content
+   $Title
+   $Content
 <% end_loop %>

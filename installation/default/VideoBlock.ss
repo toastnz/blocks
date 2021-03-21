@@ -1,3 +1,0 @@
-$Video
-$ThumbnailID
-$Video.ThumbnailURL

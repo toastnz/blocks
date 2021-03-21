@@ -1,2 +1,0 @@
-$BackgroundImage
-$Content

@@ -1,9 +1,13 @@
+<%----------------------------------------------------------------
+Download Block
+----------------------------------------------------------------%>
 <% if $Items %>
     <% loop $Items.Sort('SortOrder') %>
+        $Summary.XML
+
         <% with $File %>
             $AbsoluteLink
             $Title
-            $Up.Summary
             $Extension.UpperCase
             $Size
         <% end_with %>

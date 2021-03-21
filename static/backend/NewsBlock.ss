@@ -1,10 +1,11 @@
-$Columns
 <% if $Items.Count %>
+    $Content
+
     <% loop $Items.Sort('SortOrder') %>
         $Link
-        $Icon
         $Image
-        $Title.XML
-        $Summary.XML
+        $FeaturedImage
+        $Title
+        $Content
     <% end_loop %>
 <% end_if %>

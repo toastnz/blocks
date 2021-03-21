@@ -1,0 +1,82 @@
+.link-block {
+  &__header,
+  &__wrap {
+    @include clearfix;
+  }
+
+  &__header {
+    margin-bottom: 4rem;
+
+    &__content {
+      display: block;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      float: left;
+
+      >:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__wrap {
+    $row: &;
+
+    @include media($xmd) {
+      &.xmd-up-2 {
+        #{$row} {
+          &__item {
+            width: 50%;
+          }
+        }
+      }
+    }
+
+    @include media($lg) {
+      &.lg-up-3 {
+        #{$row} {
+          &__item {
+            width: 33.333333333%;
+          }
+        }
+    }
+
+    &__item {
+      display: block;
+      float: left;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      margin-bottom: 4rem;
+
+      &__link {
+        display: block;
+        position: relative;
+        text-decoration: none;
+        margin-bottom: 4rem;
+
+        &__image {
+          @include cover;
+          position: relative;
+          height: 35rem;
+          width: 100%;
+          margin-bottom: 4rem;
+        }
+
+        &__content {
+          position: relative;
+          z-index: 1;
+
+          &__heading {
+            color: $primary;
+            font-weight: bold;
+            margin-bottom: 4rem;
+          }
+
+          &__body {
+            color: $black;
+          }
+        }
+      }
+    }
+  }
+}
