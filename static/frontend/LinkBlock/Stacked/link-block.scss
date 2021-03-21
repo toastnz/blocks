@@ -7,11 +7,32 @@
     margin-bottom: 10rem;
   }
 
+  &__header,
   &__wrap {
-    $row: &;
     @include clearfix;
     max-width: $xl;
     margin: 0 auto;
+  }
+
+  &__header {
+    margin-bottom: 4rem;
+
+    &__content {
+      display: block;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      text-align: center;
+      float: left;
+
+      &__title {
+        font-weight: bold;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__wrap {
+    $row: &;
 
     @include media($xmd) {
       &.xmd-up-2 {
@@ -51,7 +72,7 @@
           position: relative;
           height: 35rem;
           width: 100%;
-          margin-bottom: 2rem;
+          margin-bottom: 4rem;
         }
 
         &__content {
@@ -61,7 +82,7 @@
           &__heading {
             color: $primary;
             font-weight: bold;
-            margin-bottom: 2rem;
+            margin-bottom: 4rem;
           }
 
           &__body {
