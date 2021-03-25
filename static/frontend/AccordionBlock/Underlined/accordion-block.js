@@ -1,5 +1,5 @@
 /* -------------------------------------------------
-Yarn add accordions -- save
+Yarn add accordions --save
 https://www.npmjs.com/package/accordions
 ------------------------------------------------- */
 
