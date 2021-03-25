@@ -1,0 +1,14 @@
+
+
+.js-accordion-block {
+  &--trigger {
+    display: block;
+    padding: 2rem;
+    font-size: 3rem;
+  }
+
+  &--target {
+    overflow: hidden;
+    height: 0;
+  }
+}
