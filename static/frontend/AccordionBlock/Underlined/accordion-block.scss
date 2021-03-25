@@ -1,6 +1,8 @@
+.js-accordion {
+  &--item {
+    padding: 2rem;
+  }
 
-
-.js-accordion-block {
   &--trigger {
     display: block;
     padding: 2rem;
