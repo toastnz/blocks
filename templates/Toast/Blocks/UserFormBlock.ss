@@ -1,9 +1,7 @@
 <% if $Form %>
-    <section class="textBlock block">
-        <div class="textBlock__wrap row">
-            <div class="column">
-                $Form
-            </div>
+    <section class="textBlock">
+        <div class="textBlock__wrap">
+            {$Form}
         </div>
     </section>
 <% end_if %>

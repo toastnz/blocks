@@ -1,7 +1,6 @@
 ---
 Name: toastblocks
 ---
-
 Page:
   extensions:
     - Toast\Blocks\Extensions\PageExtension
@@ -19,50 +18,32 @@ SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest:
     CmsActionsExtension: Toast\Blocks\Extensions\CmsActionsExtension
 
 Toast\Blocks\TextBlock:
-  icon: '[resources]/images/text.svg'
+  icon: "[resources]/images/text-alt.svg"
 
 Toast\Blocks\AccordionBlock:
-  icon: '[resources]/images/accordion.svg'
+  icon: "[resources]/images/accordion.svg"
 
 Toast\Blocks\ChildLinkBlock:
-  icon: '[resources]/images/link.svg'
-  content_field: 'Content'
-
-Toast\Blocks\ColumnBlock:
-  icon: '[resources]/images/splitblock.svg'
+  icon: "[resources]/images/link.svg"
+  content_field: "Content"
 
 Toast\Blocks\DownloadBlock:
-  icon: '[resources]/images/download.svg'
-
-Toast\Blocks\GalleryBlock:
-  icon: '[resources]/images/gallery.svg'
-
-Toast\Blocks\HeroBlock:
-  icon: '[resources]/images/hero.svg'
+  icon: "[resources]/images/download.svg"
 
 Toast\Blocks\ImageBlock:
-  icon: '[resources]/images/image.svg'
-
-Toast\Blocks\InstagramBlock:
-  icon: '[resources]/images/social.svg'
+  icon: "[resources]/images/image.svg"
 
 Toast\Blocks\LinkBlock:
-  icon: '[resources]/images/link.svg'
-
-Toast\Blocks\NewsBlock:
-  icon: '[resources]/images/news.svg'
-
-Toast\Blocks\PercentageBlock:
-  icon: '[resources]/images/percentage.svg'
+  icon: "[resources]/images/link.svg"
 
 Toast\Blocks\TabbedContentBlock:
-  icon: '[resources]/images/statistic.svg'
-
-Toast\Blocks\TestimonialBlock:
-  icon: '[resources]/images/testimonial.svg'
+  icon: "[resources]/images/statistic.svg"
 
 Toast\Blocks\VideoBlock:
-  icon: '[resources]/images/video.svg'
+  icon: "[resources]/images/video.svg"
 
-Toast\Blocks\SplitBlock:
-  icon: '[resources]/images/splitblock.svg'
+Toast\Blocks\ImageTextBlock:
+  icon: "[resources]/images/imagetext.svg"
+
+Toast\Blocks\UserFormBlock:
+  icon: "[resources]/images/form.svg"

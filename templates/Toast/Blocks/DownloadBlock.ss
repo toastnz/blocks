@@ -2,7 +2,7 @@
 Download Block
 ----------------------------------------------------------------%>
 <% if $Items %>
-    <section class="downloadBlock block">
+    <section class="downloadBlock">
         <div class="downloadBlock__wrap">
 
             <div class="downloadBlock__wrap__list">

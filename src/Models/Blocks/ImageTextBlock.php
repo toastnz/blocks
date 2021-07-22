@@ -4,10 +4,10 @@ namespace Toast\Blocks;
 
 use SilverStripe\Assets\Image;
 use SilverStripe\AssetAdmin\Forms\UploadField;
-use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\ORM\FieldType\DBHTMLText;
+use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 
 class ImageTextBlock extends Block
@@ -19,6 +19,7 @@ class ImageTextBlock extends Block
     private static $plural_name = 'Image & Text';
 
     private static $db = [
+        'EnableParallax' => 'Boolean',
         'Content' => 'HTMLText',
         'Alignment' => 'Enum("standard,reversed", "standard")'
     ];
@@ -35,9 +36,15 @@ class ImageTextBlock extends Block
     {
         $fields = parent::getCMSFields();
 
+        $fields->removeByName(['Image', 'EnableParallax', 'Alignment']);
+
         $fields->addFieldsToTab('Root.Main', [
-            UploadField::create('Image', 'Image')
-                ->setFolderName('Uploads/Blocks')
+            CheckboxField::create('EnableParallax', 'Enable Parallax'),
+            DropdownField::create('Alignment', 'Alignment', [
+                'reversed' => 'Text left, Image right',
+                'standard' => 'Image left, Text right'
+            ]),
+            UploadField::create('Image', 'Image')->setFolderName('Uploads/Blocks')
         ]);
 
         return $fields;

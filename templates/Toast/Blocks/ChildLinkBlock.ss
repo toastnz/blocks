@@ -1,9 +1,9 @@
 <% if $Items %>
-    <section class="linkBlock contentBlock" data-equalize="summary,heading">
-        <div class="linkBlock__wrap row md-up-2 xmd-up-$Columns">
+    <section class="linkBlock linkBlock--{$Columns}">
+        <div class="linkBlock__wrap">
             <% loop $Items %>
-                <a href="<% if $LinkID %>$Link.LinkURL<% else %>$AbsoluteLink<% end_if %>" class="linkBlock__wrap__item column">
-                    <div class="linkBlock__wrap__item__details" data-equalize-watch="heading">
+                <a href="<% if $LinkID %>$Link.LinkURL<% else %>$AbsoluteLink<% end_if %>" class="linkBlock__wrap__item">
+                    <div class="linkBlock__wrap__item__details">
                         <% if $Top.Columns == 2 %>
                             <h5>$Title.XML</h5>
                         <% else %>
@@ -15,7 +15,7 @@
                             <div class="alignContent">
                                 <% if $Blocks__ContentSummary %>
                                     <div class="contentRow">
-                                        <div class="verticalAlign verticalAlign--top" data-equalize-watch="summary">
+                                        <div class="verticalAlign verticalAlign--top">
                                             <p>
                                                 $Blocks__ContentSummary.LimitCharacters(50)
                                             </p>
