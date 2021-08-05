@@ -6,16 +6,11 @@ Image and Text Block
 <div class="imageText__wrap" >
 
         <div class="imageText__wrap__image" <% if $EnableParallax %>data-parallax="<% if $ReverseLayout %>.2<% else %>-.2<% end_if %>"<% end_if %>>
-            
-            $Image.FocusFill(1200,800)
-
-            <div class="animatedPanel [ js-in-view ]">
-                <div class="animatedPanel__colour"></div>
-            </div>
+            $Image.FocusCropWidth(1200)
         </div>
 
         <div class="imageText__wrap__text" <% if $EnableParallax %>data-parallax="<% if $ReverseLayout %>-.2<% else %>.2<% end_if %>"<% end_if %>>
             $Content
         </div>
     </div>
-</div>
+</div>  

@@ -17,6 +17,9 @@ SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest:
   extensions:
     CmsActionsExtension: Toast\Blocks\Extensions\CmsActionsExtension
 
+Toast\Blocks\CodeBlock:
+  icon: "[resources]/images/code.svg"
+
 Toast\Blocks\TextBlock:
   icon: "[resources]/images/text-alt.svg"
 
@@ -37,7 +40,7 @@ Toast\Blocks\LinkBlock:
   icon: "[resources]/images/link.svg"
 
 Toast\Blocks\TabbedContentBlock:
-  icon: "[resources]/images/statistic.svg"
+  icon: "[resources]/images/tabbedcontent.svg"
 
 Toast\Blocks\VideoBlock:
   icon: "[resources]/images/video.svg"
@@ -47,3 +50,6 @@ Toast\Blocks\ImageTextBlock:
 
 Toast\Blocks\UserFormBlock:
   icon: "[resources]/images/form.svg"
+
+Toast\Blocks\HeroBlock:
+  icon: "[resources]/images/hero.svg"
