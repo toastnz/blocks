@@ -2,7 +2,7 @@
 
     <% if $BackgroundImage %>
         <div class="heroBlock__container">
-            <div class="heroBlock__container__background [ js-hero-block-image ]" style="background-image: url('{$BackgroundImage.FocusFill(1920,1080).URL}');"></div>
+            <div class="heroBlock__container__background [ js-hero-block-image ][ lazyload ]" data-bgset="{$BackgroundImage.FocusFill(1920,1080).URL}" style="background-position: $BackgroundImage.PercentageX% $BackgroundImage.PercentageY%;"></div>
         </div>
     <% end_if %>
 

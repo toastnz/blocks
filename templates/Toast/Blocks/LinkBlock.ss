@@ -8,12 +8,12 @@
 
                     <% if $Icon %>
                         <div class="linkBlock__wrap__item__icon">
-                            <img src="$Icon.URL">
+                            <img class="[ lazyload ]" data-src="$Icon.URL">
                         </div>
                     <% else_if $Image %>
                         
                         <div class="linkBlock__wrap__item__image">
-                            <img src="$Image.FocusFill(600,360).URL" />
+                            <img class="[ lazyload ]" data-src="$Image.FocusFill(600,360).URL"  alt="$Image.Title" >
                         </div>
                     <% end_if %>
 

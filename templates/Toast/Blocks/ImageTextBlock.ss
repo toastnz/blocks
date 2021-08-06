@@ -6,7 +6,7 @@ Image and Text Block
 <div class="imageText__wrap" >
 
         <div class="imageText__wrap__image" <% if $EnableParallax %>data-parallax="<% if $ReverseLayout %>.2<% else %>-.2<% end_if %>"<% end_if %>>
-            $Image.FocusCropWidth(1200)
+            <img class="[ lazyload ]" data-src="{$Image.FocusCropWidth(1200).URL}" alt="$Image.Title"> 
         </div>
 
         <div class="imageText__wrap__text" <% if $EnableParallax %>data-parallax="<% if $ReverseLayout %>-.2<% else %>.2<% end_if %>"<% end_if %>>
