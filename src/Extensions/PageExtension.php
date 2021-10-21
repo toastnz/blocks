@@ -8,6 +8,7 @@ use SilverStripe\Assets\File;
 use SilverStripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Control\Director;
+use SilverStripe\Forms\HiddenField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Config\Config;
@@ -49,11 +50,19 @@ class PageExtension extends DataExtension
                 ->removeComponentsByType(GridFieldFilterHeader::class)
                 ->removeComponentsByType(GridField_ActionMenu::class);
 
+            $self = $this->owner;
+
             $config->getComponentByType(GridFieldDetailForm::class)
-                ->setItemRequestClass(VersionedGridFieldItemRequest::class);
+                ->setItemRequestClass(VersionedGridFieldItemRequest::class)
+                ->setItemEditFormCallback(function ($form, $itemRequest) use ($self) {                    
+                    if (!$itemRequest->record->exists()) {
+                        $nextSortOrder = $self->ContentBlocks()->max('SortOrder') + 1;
+                        $form->Fields()->add(HiddenField::create('ManyMany[SortOrder]', 'Sort Order', $nextSortOrder));
+                    }
+                });    
 
             $multiClass = new GridFieldAddNewMultiClass();
-
+            
             $multiClass->setClasses(Config::inst()->get(PageExtension::class, 'available_blocks'));
 
             $config->addComponent($multiClass);
@@ -62,6 +71,7 @@ class PageExtension extends DataExtension
             $addExisting->setSearchFields(['Title:PartialMatch' ]);
 
             $config->addComponent(new GridFieldOrderableRows('SortOrder'));
+
 
             $gridField = GridField::create(
                 'ContentBlocks',
