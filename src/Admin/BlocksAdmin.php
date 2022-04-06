@@ -45,7 +45,6 @@ class BlocksAdmin extends ModelAdmin
 
         $gridField->getConfig()
             ->removeComponentsByType(GridFieldAddNewButton::class)
-            ->removeComponentsByType(GridFieldFilterHeader::class)
             ->removeComponentsByType(GridField_ActionMenu::class)
             ->addComponent($multiClass)
             ->removeComponentsByType(GridFieldExportButton::class)

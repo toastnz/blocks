@@ -49,6 +49,10 @@ class Block extends DataObject
         'ContentSummary' => 'Content'
     ];
 
+    private static $searchable_fields = [
+        'Title'
+    ];
+
     private static $extensions = [
         Versioned::class
     ];
