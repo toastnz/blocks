@@ -6,11 +6,10 @@ use Toast\Blocks\LinkBlock;
 use SilverStripe\Assets\File;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\TextField;
+use Sheadawson\Linkable\Models\Link;
 use SilverStripe\Forms\TextareaField;
+use Sheadawson\Linkable\Forms\LinkField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
-use gorriecoe\Link\Models\Link;
-use gorriecoe\LinkField\LinkField;
-
 
 class LinkBlockItem extends BlockItem
 {
@@ -49,7 +48,7 @@ class LinkBlockItem extends BlockItem
                     ->setFolderName('Uploads/Blocks'),
                 TextField::create('Title', 'Title'),
                 TextareaField::create('Summary', 'Summary'),
-                LinkField::create('Link', 'Link', $this),
+                LinkField::create('LinkID', 'Link'),
             ]);
 
         });
