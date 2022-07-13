@@ -43,17 +43,11 @@ Toast\Blocks\HeroBlock:
 Toast\Blocks\ImageBlock:
   icon: '[resources]/toastnz/blocks/images/image.svg'
 
-Toast\Blocks\InstagramBlock:
-  icon: '[resources]/toastnz/blocks/images/social.svg'
-
 Toast\Blocks\LinkBlock:
   icon: '[resources]/toastnz/blocks/images/link.svg'
 
 Toast\Blocks\NewsBlock:
   icon: '[resources]/toastnz/blocks/images/news.svg'
-
-Toast\Blocks\PercentageBlock:
-  icon: '[resources]/toastnz/blocks/images/percentage.svg'
 
 Toast\Blocks\TabbedContentBlock:
   icon: '[resources]/toastnz/blocks/images/tabbedcontent.svg'
@@ -63,7 +57,4 @@ Toast\Blocks\TestimonialBlock:
 
 Toast\Blocks\VideoBlock:
   icon: '[resources]/toastnz/blocks/images/video.svg'
-
-Toast\Blocks\SplitBlock:
-  icon: '[resources]/toastnz/blocks/images/splitblock.svg'
 
