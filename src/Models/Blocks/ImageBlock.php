@@ -3,13 +3,11 @@
 namespace Toast\Blocks;
 
 use SilverStripe\Assets\Image;
-use SilverStripe\AssetAdmin\Forms\UploadField;
-use SilverStripe\Forms\FieldList;
-use SilverStripe\ORM\FieldType\DBField;
-use SilverStripe\Forms\RequiredFields;
-use SilverStripe\ORM\FieldType\DBHTMLText;
-use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\RequiredFields;
+use SilverStripe\ORM\FieldType\DBField;
+use SilverStripe\ORM\FieldType\DBHTMLText;
+use SilverStripe\AssetAdmin\Forms\UploadField;
 
 class ImageBlock extends Block
 {
@@ -20,7 +18,7 @@ class ImageBlock extends Block
     private static $plural_name = 'Images';
 
     private static $db = [
-        'Caption' => 'Text',
+        'Caption' => 'Text'
     ];
 
     private static $has_one = [
@@ -41,12 +39,10 @@ class ImageBlock extends Block
                     ->setFolderName('Uploads/Blocks'),
                 TextField::create('Caption', 'Caption')
                     ->setDescription('Optional caption for this image')
-                ]);
-
+            ]);
         });
 
         return parent::getCMSFields();
-
     }
 
     public function getContentSummary()

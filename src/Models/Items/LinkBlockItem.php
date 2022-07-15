@@ -50,7 +50,6 @@ class LinkBlockItem extends BlockItem
                 TextareaField::create('Summary', 'Summary'),
                 LinkField::create('LinkID', 'Link'),
             ]);
-
         });
 
         return parent::getCMSFields();

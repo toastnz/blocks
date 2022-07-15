@@ -3,12 +3,10 @@
 namespace Toast\Blocks;
 
 use SilverStripe\Assets\Image;
-use SilverStripe\AssetAdmin\Forms\UploadField;
-use SilverStripe\Forms\FieldList;
-use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\Forms\RequiredFields;
+use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
-use SilverStripe\Forms\DropdownField;
+use SilverStripe\AssetAdmin\Forms\UploadField;
 
 class ImageTextBlock extends Block
 {
@@ -39,7 +37,6 @@ class ImageTextBlock extends Block
                 UploadField::create('Image', 'Image')
                     ->setFolderName('Uploads/Blocks')
             ]);
-
         });
 
         return parent::getCMSFields();
@@ -55,6 +52,5 @@ class ImageTextBlock extends Block
         $required = new RequiredFields([Image::class, 'Content']);
         $this->extend('updateCMSValidator', $required);
         return $required;
-
     }
 }

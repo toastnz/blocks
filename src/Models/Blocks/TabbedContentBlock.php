@@ -2,10 +2,7 @@
 
 namespace Toast\Blocks;
 
-use SilverStripe\ORM\HasManyList;
 use SilverStripe\Forms\LiteralField;
-use SilverStripe\ORM\FieldType\DBField;
-use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\Forms\GridField\GridField;
 use Toast\Blocks\Items\ContentTabBlockItem;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
@@ -36,18 +33,16 @@ class TabbedContentBlock extends Block
                     ->addComponent(new GridFieldDeleteAction())
                     ->removeComponentsByType(GridFieldAddExistingAutoCompleter::class);
                 $gridField = GridField::create('Tabs', 'Tabs', $this->Tabs(), $config);
-                
-                $fields->addFieldToTab('Root.Main', $gridField);
 
+                $fields->addFieldToTab('Root.Main', $gridField);
             } else {
-                $fields->addFieldToTab('Root.Main',
+                $fields->addFieldToTab(
+                    'Root.Main',
                     LiteralField::create('Notice', '<div class="message notice">Save this block to see more options.</div>')
                 );
             }
         });
 
         return parent::getCMSFields();
-
     }
-
 }

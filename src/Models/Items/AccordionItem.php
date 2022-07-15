@@ -2,9 +2,7 @@
 
 namespace Toast\Blocks\Items;
 
-use SilverStripe\Forms\TabSet;
 use Toast\Blocks\AccordionBlock;
-use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Security\Permission;
 use SilverStripe\Forms\RequiredFields;
@@ -15,11 +13,11 @@ use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 class AccordionItem extends BlockItem
 {
     private static $table_name = 'Blocks_AccordionItem';
- 
+
     private static $singular_name = 'Item';
- 
+
     private static $plural_name = 'Items';
- 
+
     private static $default_sort = 'SortOrder';
 
     private static $db = [
@@ -52,7 +50,6 @@ class AccordionItem extends BlockItem
                 TextField::create('Title', 'Title'),
                 HTMLEditorField::create('Content', 'Content')
             ]);
-
         });
 
         return parent::getCMSFields();
@@ -73,7 +70,6 @@ class AccordionItem extends BlockItem
         $required = new RequiredFields(['Heading', 'Content']);
         $this->extend('updateCMSValidator', $required);
         return $required;
-
     }
 
     public function GroupNumber()

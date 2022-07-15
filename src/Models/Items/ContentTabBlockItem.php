@@ -2,14 +2,9 @@
 
 namespace Toast\Blocks\Items;
 
-use SilverStripe\Assets\File;
-use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use Toast\Blocks\TabbedContentBlock;
-use SilverStripe\Forms\TextareaField;
 use SilverStripe\Security\Permission;
-use SilverStripe\ORM\FieldType\DBField;
-use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 
 class ContentTabBlockItem extends BlockItem
@@ -46,7 +41,6 @@ class ContentTabBlockItem extends BlockItem
                 HTMLEditorField::create('Content', 'Content')
                     ->setRows(15)
             ]);
-
         });
 
         return parent::getCMSFields();

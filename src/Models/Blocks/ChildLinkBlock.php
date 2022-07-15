@@ -2,15 +2,10 @@
 
 namespace Toast\Blocks;
 
-use Toast\Model\LinkBlockItem;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\DropdownField;
-use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
-use SilverStripe\Forms\GridField\GridFieldDeleteAction;
-use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
-use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 
 class ChildLinkBlock extends Block
 {
@@ -24,7 +19,7 @@ class ChildLinkBlock extends Block
 
     private static $db = [
         'Content' => 'HTMLText',
-        'Columns' => 'Enum("2,3,4", "2")'
+        'Columns' => 'Enum("2,3,4", "3")'
     ];
 
     public function getCMSFields()
@@ -36,7 +31,6 @@ class ChildLinkBlock extends Block
                     ->setRows(15),
                 DropdownField::create('Columns', 'Columns', singleton(self::class)->dbObject('Columns')->enumValues())
             ]);
-
         });
 
         return parent::getCMSFields();

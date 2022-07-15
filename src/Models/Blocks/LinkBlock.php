@@ -2,11 +2,9 @@
 
 namespace Toast\Blocks;
 
-use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\DropdownField;
 use Toast\Blocks\Items\LinkBlockItem;
 use SilverStripe\Forms\GridField\GridField;
-use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
@@ -20,7 +18,7 @@ class LinkBlock extends Block
     private static $plural_name = 'Links';
 
     private static $db = [
-        'Columns' => 'Enum("2, 3, 4", "2")'
+        'Columns' => 'Enum("2, 3, 4", "3")'
     ];
 
     private static $has_many = [
@@ -43,16 +41,15 @@ class LinkBlock extends Block
                     ->removeComponentsByType(GridFieldDeleteAction::class)
                     ->addComponent(new GridFieldDeleteAction(false))
                     ->removeComponentsByType('GridFieldAddExistingAutoCompleter');
-        
+
                 $linkBlockGridField = GridField::create(
                     'Items',
                     'Link Block Items',
                     $this->owner->Items(),
                     $linkConfig
-                );    
+                );
                 $fields->addFieldToTab('Root.Main', $linkBlockGridField);
             }
-
         });
 
         return parent::getCMSFields();

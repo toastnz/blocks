@@ -1,9 +1,7 @@
 <% if $Content %>
-	<section class="textBlock block">
-		<div class="textBlock__wrap row">
-			<div class="column">
-				$Content
-			</div>
+	<section class="text-block text-block--{$BackgroundColour}">
+		<div class="text-block__wrap text-block__wrap--{$Width}">
+			{$Content}
 		</div>
 	</section>
 <% end_if %>

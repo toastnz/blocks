@@ -2,30 +2,33 @@
 
 namespace Toast\Blocks;
 
-use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\RequiredFields;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 
 class TextBlock extends Block
 {
     private static $table_name = 'Blocks_TextBlock';
-    
+
     private static $singular_name = 'Text';
-    
+
     private static $plural_name = 'Text';
 
     private static $db = [
-        'Content' => 'HTMLText'
+        'Content' => 'HTMLText',
+        'Width' => 'Enum("standard, narrow,very-narrow", "standard")',
+        'BackgroundColour' => 'Enum("white,off-white,primary", "white")'
     ];
 
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function ($fields) {
-        
-            $fields->addFieldsToTab('Root.Main', [
-                HTMLEditorField::create('Content', 'Content')
-            ]);
 
+            $fields->addFieldsToTab('Root.Main', [
+                HTMLEditorField::create('Content', 'Content'),
+                DropdownField::create('Width', 'Width', singleton(self::class)->dbObject('Width')->enumValues()),
+                DropdownField::create('BackgroundColour', 'Background Colour', singleton(self::class)->dbObject('BackgroundColour')->enumValues())
+            ]);
         });
 
         return parent::getCMSFields();

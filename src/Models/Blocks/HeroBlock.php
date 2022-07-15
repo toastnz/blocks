@@ -4,10 +4,8 @@ namespace Toast\Blocks;
 
 use Toast\Blocks\Block;
 use SilverStripe\Assets\Image;
-use SilverStripe\Forms\CheckboxField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
-
 
 class HeroBlock extends Block
 {
@@ -18,8 +16,7 @@ class HeroBlock extends Block
     private static $plural_name = 'Hero blocks';
 
     private static $db = [
-        'Content' => 'HTMLText',
-        'FullWidth' => 'Boolean'
+        'Content' => 'HTMLText'
     ];
 
     private static $has_one = [
@@ -36,14 +33,11 @@ class HeroBlock extends Block
 
             $fields->addFieldsToTab('Root.Main', [
                 HTMLEditorField::create('Content', 'Content')->setRows(5),
-                CheckboxField::create('FullWidth', 'Extend content to use full width'),
                 UploadField::create('BackgroundImage', 'Background Image')
                     ->setFolderName('Uploads/Blocks')
             ]);
-
         });
 
         return parent::getCMSFields();
     }
-
 }

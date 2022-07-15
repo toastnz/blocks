@@ -5,26 +5,18 @@ namespace Toast\Blocks;
 use Page;
 use ReflectionClass;
 use SilverStripe\ORM\DB;
-use SilverStripe\Forms\Tab;
-use SilverStripe\Forms\TabSet;
 use SilverStripe\ORM\DataObject;
-use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Security\Member;
 use SilverStripe\Control\Director;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
-use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\Security\Permission;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\ORM\FieldType\DBField;
-use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
-use SilverStripe\Forms\GridField\GridField;
-use SilverStripe\Forms\GridField\GridFieldConfig_Base;
-use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\CMS\Controllers\CMSPageEditController;
 
 class Block extends DataObject
@@ -69,7 +61,6 @@ class Block extends DataObject
             </div>
             <span style="font-weight:bold;color:#377cff;display:block;line-height:10px;text-align:center;margin:0px 0 0;padding:0;font-size:10px;text-transform:uppercase;">' . $this->i18n_singular_name() . '</span>
         ');
-
     }
 
     public function IconForCMS()
@@ -99,7 +90,6 @@ class Block extends DataObject
                 TextField::create('Title', 'Title')
                     ->setDescription('Title used for internal reference only and does not appear on the site.')
             ]);
-
         });
 
         return parent::getCMSFields();
@@ -273,7 +263,7 @@ class Block extends DataObject
                             return SiteTree::get()->byID($data->ID);
                         }
                     }
-                } catch (\Exception $e) {                    
+                } catch (\Exception $e) {
                 }
             }
         }
@@ -319,5 +309,4 @@ class Block extends DataObject
 
         return true;
     }
-
 }

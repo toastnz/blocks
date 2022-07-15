@@ -2,14 +2,14 @@
 
 namespace Toast\Blocks;
 
+use SilverStripe\Assets\Image;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\RequiredFields;
+use SilverStripe\ORM\FieldType\DBField;
+use SilverStripe\ORM\FieldType\DBHTMLText;
 use Axllent\FormFields\FieldType\VideoLink;
 use Axllent\FormFields\Forms\VideoLinkField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
-use SilverStripe\Assets\Image;
-use SilverStripe\Forms\RequiredFields;
-use SilverStripe\Forms\TextField;
-use SilverStripe\ORM\FieldType\DBField;
-use SilverStripe\ORM\FieldType\DBHTMLText;
 
 class VideoBlock extends Block
 {
@@ -44,7 +44,6 @@ class VideoBlock extends Block
                     ->setFolderName('Uploads/Blocks')
                     ->setDescription('Will automatically use YouTube thumbnail if this image is not uploaded. Ideal size: 960x540')
             ]);
-
         });
 
         return parent::getCMSFields();
@@ -52,7 +51,7 @@ class VideoBlock extends Block
 
     public function getCMSValidator()
     {
-        $required = new RequiredFields(['Title', 'Video']);
+        $required = new RequiredFields(['Video']);
 
         $this->extend('updateCMSValidator', $required);
 
@@ -63,6 +62,4 @@ class VideoBlock extends Block
     {
         return DBField::create_field(DBHTMLText::class, $this->Video);
     }
-
-
 }

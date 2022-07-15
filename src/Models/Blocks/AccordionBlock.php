@@ -2,7 +2,6 @@
 
 namespace Toast\Blocks;
 
-use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\GroupedList;
 use SilverStripe\Forms\LiteralField;
 use Toast\Blocks\Items\AccordionItem;
@@ -19,9 +18,9 @@ class AccordionBlock extends Block
     private static $table_name = 'Blocks_AccordionBlock';
 
     private static $singular_name = 'Accordion';
-    
+
     private static $plural_name = 'Accordions';
-    
+
     private static $has_many = [
         'Items' => AccordionItem::class
     ];
@@ -45,7 +44,6 @@ class AccordionBlock extends Block
             } else {
                 $fields->addFieldToTab('Root.Main', LiteralField::create('', '<div class="message notice">Save this block to show additional options.</div>'));
             }
-
         });
 
         return parent::getCMSFields();
@@ -63,5 +61,4 @@ class AccordionBlock extends Block
     {
         return GroupedList::create($this->Items());
     }
-
 }

@@ -3,17 +3,13 @@ Image block
 ------------------------------------------------------------------%>
 <% if $Image %>
 
-<section class="imageBlock contentBlock">
-    <div class="imageBlock__wrap [ js-in-view ]">
-        <picture>
-            <source media="(min-width: 1200px)" srcset="$Image.FocusFill(1920,1080).URL">
-            <source media="(min-width: 800px)" srcset="$Image.FocusFill(960,540).URL">
-            <source media="(min-width: 320px)" srcset="$Image.FocusFill(480,270).URL">
-            <img src="$Image.FocusFill(1920,1080).URL" alt="$Image.Title">
-        </picture>
+<section class="image-block">
+    <div class="image-block__wrap">
+
+        <img src="$Image.FocusFill(960,540).URL" width="960" height="540" loading="lazy"  alt="$Image.Title">
 
         <% if $Caption %>
-            <div class="imageBlock__wrap__caption ">
+            <div class="image-block__wrap__caption ">
                 <p>$Caption</p>
             </div>
         <% end_if %>
