@@ -1,6 +1,6 @@
 <% if $Tabs %>
 <section class="tabbed-block block [ js-tabs ]">
-    <div class="tabbed-block__wrap">
+    <div class="tabbed-block__wrap tabbed-block__wrap--{$Width}">
 
         <div class="tabbed-block__wrap__tabs">
             

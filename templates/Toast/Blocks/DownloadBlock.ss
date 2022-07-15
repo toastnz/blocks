@@ -3,7 +3,7 @@ Download Block
 ----------------------------------------------------------------%>
 <% if $Items %>
     <section class="download-block block">
-        <div class="download-block__wrap">
+        <div class="download-block__wrap download-block__wrap--{$Width}">
 
             <div class="download-block__wrap__list">
 

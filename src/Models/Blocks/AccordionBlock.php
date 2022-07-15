@@ -4,6 +4,7 @@ namespace Toast\Blocks;
 
 use SilverStripe\ORM\GroupedList;
 use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\DropdownField;
 use Toast\Blocks\Items\AccordionItem;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
@@ -22,7 +23,8 @@ class AccordionBlock extends Block
     private static $plural_name = 'Accordions';
 
     private static $has_many = [
-        'Items' => AccordionItem::class
+        'Items' => AccordionItem::class,
+        'Width' => 'Enum("standard,wide,narrow,very-narrow", "standard")'
     ];
 
     public function getCMSFields()
@@ -40,7 +42,10 @@ class AccordionBlock extends Block
 
                 $grid = GridField::create('Items', 'Accordion Items', $this->Items(), $config);
 
-                $fields->addFieldToTab('Root.Main', $grid);
+                $fields->addFieldsToTab('Root.Main', [
+                    $grid,
+                    DropdownField::create('Width', 'Width', singleton(self::class)->dbObject('Width')->enumValues())
+                ]);
             } else {
                 $fields->addFieldToTab('Root.Main', LiteralField::create('', '<div class="message notice">Save this block to show additional options.</div>'));
             }

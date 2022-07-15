@@ -4,7 +4,7 @@ Accordion block
 
 <section class="accordion">
 
-    <div class="accordion__wrap">
+    <div class="accordion__wrap accordion__wrap--{$Width}">
 
         <% loop $Items %>
 

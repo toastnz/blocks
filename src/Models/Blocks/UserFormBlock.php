@@ -4,6 +4,7 @@ namespace Toast\Blocks;
 
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Control\Controller;
+use SilverStripe\Forms\DropdownField;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\UserForms\Form\UserForm;
 use SilverStripe\UserForms\Model\UserDefinedForm;
@@ -16,13 +17,20 @@ class UserFormBlock extends Block
 
     private static $plural_name = 'User forms';
 
+    private static $db = [
+        'Width' => 'Enum("standard,wide,narrow,very-narrow", "standard")',
+    ];
+
+
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function ($fields) {
 
             $fields->insertAfter(
                 'Title',
-                LiteralField::create('', '<div class="message warning"><strong>Note:</strong><br />Form must be configured from the <strong>Form Fields</strong> page tab and only applies to <strong>User Defined Form</strong> page types.</div>')
+                LiteralField::create('', '<div class="message warning"><strong>Note:</strong><br />Form must be configured from the <strong>Form Fields</strong> page tab and only applies to <strong>User Defined Form</strong> page types.</div>'),
+                DropdownField::create('Width', 'Width', singleton(self::class)->dbObject('Width')->enumValues())
+
             );
         });
 

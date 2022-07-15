@@ -1,7 +1,7 @@
 <% if $Items %>
     <section class="link-block block">
 
-        <div class="link-block__wrap link-block__wrap--{$Columns}">
+        <div class="link-block__wrap link-block__wrap--{$Width} link-block__wrap--{$Columns}">
             
             <% loop $Items.Sort('SortOrder') %>
                 <a href="$Link.LinkURL" class="link-block__wrap__item <% if not $Icon && not $image %>bordered <% end_if %>">

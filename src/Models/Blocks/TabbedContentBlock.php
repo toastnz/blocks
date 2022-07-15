@@ -3,6 +3,7 @@
 namespace Toast\Blocks;
 
 use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\GridField\GridField;
 use Toast\Blocks\Items\ContentTabBlockItem;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
@@ -17,6 +18,10 @@ class TabbedContentBlock extends Block
     private static $singular_name = 'Tabbed Content';
 
     private static $plural_name = 'Tabbed Content';
+
+    private static $db = [
+        'Width' => 'Enum("standard,wide,narrow,very-narrow", "standard")',
+    ];
 
     private static $has_many = [
         'Tabs' => ContentTabBlockItem::class
@@ -34,7 +39,10 @@ class TabbedContentBlock extends Block
                     ->removeComponentsByType(GridFieldAddExistingAutoCompleter::class);
                 $gridField = GridField::create('Tabs', 'Tabs', $this->Tabs(), $config);
 
-                $fields->addFieldToTab('Root.Main', $gridField);
+                $fields->addFieldsToTab('Root.Main', [
+                    $gridField,
+                    DropdownField::create('Width', 'Width', singleton(self::class)->dbObject('Width')->enumValues()),
+                ]);
             } else {
                 $fields->addFieldToTab(
                     'Root.Main',

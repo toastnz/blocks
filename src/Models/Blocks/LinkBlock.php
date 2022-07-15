@@ -18,7 +18,8 @@ class LinkBlock extends Block
     private static $plural_name = 'Links';
 
     private static $db = [
-        'Columns' => 'Enum("2, 3, 4", "3")'
+        'Columns' => 'Enum("2, 3, 4", "3")',
+        'Width' => 'Enum("standard,wide,narrow,very-narrow", "standard")',
     ];
 
     private static $has_many = [
@@ -33,6 +34,7 @@ class LinkBlock extends Block
 
             $fields->addFieldsToTab('Root.Main', [
                 DropdownField::create('Columns', 'How many columns across', singleton('Toast\Blocks\LinkBlock')->dbObject('Columns')->enumValues()),
+                DropdownField::create('Width', 'Width', singleton(self::class)->dbObject('Width')->enumValues())
             ]);
 
             if ($this->ID) {

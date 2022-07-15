@@ -4,6 +4,7 @@ namespace Toast\Blocks;
 
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
@@ -18,7 +19,8 @@ class ImageBlock extends Block
     private static $plural_name = 'Images';
 
     private static $db = [
-        'Caption' => 'Text'
+        'Caption' => 'Text',
+        'Width' => 'Enum("standard,wide,narrow,very-narrow", "standard")'
     ];
 
     private static $has_one = [
@@ -38,7 +40,8 @@ class ImageBlock extends Block
                 UploadField::create('Image', 'Image')
                     ->setFolderName('Uploads/Blocks'),
                 TextField::create('Caption', 'Caption')
-                    ->setDescription('Optional caption for this image')
+                    ->setDescription('Optional caption for this image'),
+                DropdownField::create('Columns', 'Columns', singleton(self::class)->dbObject('Columns')->enumValues())
             ]);
         });
 

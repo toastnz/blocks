@@ -19,7 +19,8 @@ class ChildLinkBlock extends Block
 
     private static $db = [
         'Content' => 'HTMLText',
-        'Columns' => 'Enum("2,3,4", "3")'
+        'Columns' => 'Enum("2,3,4", "3")',
+        'Width' => 'Enum("standard,wide,narrow,very-narrow", "standard")'
     ];
 
     public function getCMSFields()
@@ -29,7 +30,8 @@ class ChildLinkBlock extends Block
             $fields->addFieldsToTab('Root.Main', [
                 HTMLEditorField::create('Content', 'Content')
                     ->setRows(15),
-                DropdownField::create('Columns', 'Columns', singleton(self::class)->dbObject('Columns')->enumValues())
+                DropdownField::create('Columns', 'Columns', singleton(self::class)->dbObject('Columns')->enumValues()),
+                DropdownField::create('Width', 'Width', singleton(self::class)->dbObject('Width')->enumValues())
             ]);
         });
 

@@ -3,6 +3,7 @@
 namespace Toast\Blocks;
 
 use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\DropdownField;
 use SilverStripe\ORM\FieldType\DBField;
 use Toast\Blocks\Items\DownloadBlockItem;
 use SilverStripe\Forms\GridField\GridField;
@@ -19,8 +20,12 @@ class DownloadBlock extends Block
 
     private static $plural_name = 'Downloads';
 
+    private static $db = [
+        'Width' => 'Enum("standard,wide,narrow,very-narrow", "standard")'
+    ];
+
     private static $has_many = [
-        'Items' => DownloadBlockItem::class
+        'Items' => DownloadBlockItem::class,
     ];
 
     public function getCMSFields()
@@ -36,7 +41,13 @@ class DownloadBlock extends Block
                     ->addComponents(new GridFieldDeleteAction())
                     ->addComponents(GridFieldOrderableRows::create('SortOrder'));
                 $grid = GridField::create('Items', 'Files', $this->Items(), $config);
-                $fields->addFieldToTab('Root.Main', $grid);
+                $fields->addFieldsToTab(
+                    'Root.Main',
+                    [
+                        $grid,
+                        DropdownField::create('Width', 'Width', singleton(self::class)->dbObject('Width')->enumValues())
+                    ]
+                );
             } else {
                 $fields->addFieldToTab('Root.Main', LiteralField::create('', '<div class="message notice">Save this block to show additional options.</div>'));
             }

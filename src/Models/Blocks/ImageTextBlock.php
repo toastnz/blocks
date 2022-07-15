@@ -18,7 +18,8 @@ class ImageTextBlock extends Block
 
     private static $db = [
         'Content' => 'HTMLText',
-        'Alignment' => 'Enum("standard,reversed", "standard")'
+        'Alignment' => 'Enum("standard,reversed", "standard")',
+        'Width' => 'Enum("standard,wide,narrow,very-narrow", "standard")',
     ];
 
     private static $has_one = [
@@ -35,7 +36,8 @@ class ImageTextBlock extends Block
 
             $fields->addFieldsToTab('Root.Main', [
                 UploadField::create('Image', 'Image')
-                    ->setFolderName('Uploads/Blocks')
+                    ->setFolderName('Uploads/Blocks'),
+                DropdownField::create('Width', 'Width', singleton(self::class)->dbObject('Width')->enumValues())
             ]);
         });
 

@@ -16,7 +16,7 @@ class TextBlock extends Block
 
     private static $db = [
         'Content' => 'HTMLText',
-        'Width' => 'Enum("standard, narrow,very-narrow", "standard")',
+        'Width' => 'Enum("standard,wide,narrow,very-narrow", "standard")',
         'BackgroundColour' => 'Enum("white,off-white,primary", "white")'
     ];
 

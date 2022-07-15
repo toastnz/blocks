@@ -4,6 +4,7 @@ namespace Toast\Blocks;
 
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
@@ -21,7 +22,8 @@ class VideoBlock extends Block
 
     private static $db = [
         'Caption' => 'Varchar(255)',
-        'Video' => VideoLink::class
+        'Video' => VideoLink::class,
+        'BackgroundColour' => 'Enum("white,off-white,primary", "white")'
     ];
 
     private static $has_one = [
@@ -42,7 +44,8 @@ class VideoBlock extends Block
                     ->showPreview(500),
                 UploadField::create('Thumbnail', 'Override default Thumbnail')
                     ->setFolderName('Uploads/Blocks')
-                    ->setDescription('Will automatically use YouTube thumbnail if this image is not uploaded. Ideal size: 960x540')
+                    ->setDescription('Will automatically use YouTube thumbnail if this image is not uploaded. Ideal size: 960x540'),
+                DropdownField::create('Width', 'Width', singleton(self::class)->dbObject('Width')->enumValues()),
             ]);
         });
 
