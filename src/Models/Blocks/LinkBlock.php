@@ -2,8 +2,10 @@
 
 namespace Toast\Blocks;
 
+use Toast\Blocks\Block;
 use SilverStripe\Forms\DropdownField;
 use Toast\Blocks\Items\LinkBlockItem;
+use UncleCheese\Forms\ImageOptionsetField;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
@@ -34,7 +36,13 @@ class LinkBlock extends Block
 
             $fields->addFieldsToTab('Root.Main', [
                 DropdownField::create('Columns', 'How many columns across', singleton('Toast\Blocks\LinkBlock')->dbObject('Columns')->enumValues()),
-                DropdownField::create('Width', 'Width', singleton(self::class)->dbObject('Width')->enumValues())
+                ImageOptionsetField::create('Width', 'Select a Width')
+                    ->setSource([
+                        'wide' => '/app/src/images/widths/wide.svg',
+                        'standard' => '/app/src/images/widths/standard.svg',
+                        'narrow' => '/app/src/images/widths/narrow.svg',
+                        'very-narrow' => '/app/src/images/widths/very-narrow.svg'
+                    ])->setImageWidth(100)->setImageHeight(100)
             ]);
 
             if ($this->ID) {

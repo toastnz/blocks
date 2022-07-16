@@ -5,6 +5,7 @@ namespace Toast\Blocks;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\DropdownField;
+use UncleCheese\Forms\ImageOptionsetField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 
 class ChildLinkBlock extends Block
@@ -31,7 +32,13 @@ class ChildLinkBlock extends Block
                 HTMLEditorField::create('Content', 'Content')
                     ->setRows(15),
                 DropdownField::create('Columns', 'Columns', singleton(self::class)->dbObject('Columns')->enumValues()),
-                DropdownField::create('Width', 'Width', singleton(self::class)->dbObject('Width')->enumValues())
+                ImageOptionsetField::create('Width', 'Select a Width')
+                    ->setSource([
+                        'wide' => '/app/src/images/widths/wide.svg',
+                        'standard' => '/app/src/images/widths/standard.svg',
+                        'narrow' => '/app/src/images/widths/narrow.svg',
+                        'very-narrow' => '/app/src/images/widths/very-narrow.svg'
+                    ])->setImageWidth(100)->setImageHeight(100)
             ]);
         });
 

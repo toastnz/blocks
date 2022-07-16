@@ -2,11 +2,11 @@
 
 namespace Toast\Blocks;
 
-use SilverStripe\Forms\LiteralField;
 use SilverStripe\Control\Controller;
-use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\UserForms\Form\UserForm;
+use UncleCheese\Forms\ImageOptionsetField;
 use SilverStripe\UserForms\Model\UserDefinedForm;
 
 class UserFormBlock extends Block
@@ -29,8 +29,13 @@ class UserFormBlock extends Block
             $fields->insertAfter(
                 'Title',
                 LiteralField::create('', '<div class="message warning"><strong>Note:</strong><br />Form must be configured from the <strong>Form Fields</strong> page tab and only applies to <strong>User Defined Form</strong> page types.</div>'),
-                DropdownField::create('Width', 'Width', singleton(self::class)->dbObject('Width')->enumValues())
-
+                ImageOptionsetField::create('Width', 'Select a Width')
+                    ->setSource([
+                        'wide' => '/app/src/images/widths/wide.svg',
+                        'standard' => '/app/src/images/widths/standard.svg',
+                        'narrow' => '/app/src/images/widths/narrow.svg',
+                        'very-narrow' => '/app/src/images/widths/very-narrow.svg'
+                    ])->setImageWidth(100)->setImageHeight(100)
             );
         });
 

@@ -4,10 +4,10 @@ namespace Toast\Blocks;
 
 use SilverStripe\ORM\GroupedList;
 use SilverStripe\Forms\LiteralField;
-use SilverStripe\Forms\DropdownField;
 use Toast\Blocks\Items\AccordionItem;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
+use UncleCheese\Forms\ImageOptionsetField;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
@@ -47,7 +47,13 @@ class AccordionBlock extends Block
 
                 $fields->addFieldsToTab('Root.Main', [
                     $grid,
-                    DropdownField::create('Width', 'Width', singleton(self::class)->dbObject('Width')->enumValues())
+                    ImageOptionsetField::create('Width', 'Select a Width')
+                    ->setSource([
+                        'wide' => '/app/src/images/widths/wide.svg',
+                        'standard' => '/app/src/images/widths/standard.svg',
+                        'narrow' => '/app/src/images/widths/narrow.svg',
+                        'very-narrow' => '/app/src/images/widths/very-narrow.svg'
+                    ])->setImageWidth(100)->setImageHeight(100)
                 ]);
             } else {
                 $fields->addFieldToTab('Root.Main', LiteralField::create('', '<div class="message notice">Save this block to show additional options.</div>'));

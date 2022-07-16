@@ -4,10 +4,10 @@ namespace Toast\Blocks;
 
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\TextField;
-use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
+use UncleCheese\Forms\ImageOptionsetField;
 use Axllent\FormFields\FieldType\VideoLink;
 use Axllent\FormFields\Forms\VideoLinkField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
@@ -45,7 +45,13 @@ class VideoBlock extends Block
                 UploadField::create('Thumbnail', 'Override default Thumbnail')
                     ->setFolderName('Uploads/Blocks')
                     ->setDescription('Will automatically use YouTube thumbnail if this image is not uploaded. Ideal size: 960x540'),
-                DropdownField::create('Width', 'Width', singleton(self::class)->dbObject('Width')->enumValues()),
+                ImageOptionsetField::create('Width', 'Select a Width')
+                    ->setSource([
+                        'wide' => '/app/src/images/widths/wide.svg',
+                        'standard' => '/app/src/images/widths/standard.svg',
+                        'narrow' => '/app/src/images/widths/narrow.svg',
+                        'very-narrow' => '/app/src/images/widths/very-narrow.svg'
+                    ])->setImageWidth(100)->setImageHeight(100)
             ]);
         });
 

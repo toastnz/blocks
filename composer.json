@@ -33,7 +33,8 @@
     "toastnz/linkable": "^2",
     "undefinedoffset/sortablegridfield": "^2.0.4",
     "axllent/silverstripe-form-fields": "^1.5",
-    "silverstripe/userforms": "^5.5"
+    "silverstripe/userforms": "^5.5",
+    "unclecheese/silverstripe-image-optionset": "^2.0"
   },
   "extra": {
     "expose": [

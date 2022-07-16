@@ -3,7 +3,7 @@
 namespace Toast\Blocks;
 
 use SilverStripe\Forms\LiteralField;
-use SilverStripe\Forms\DropdownField;
+use UncleCheese\Forms\ImageOptionsetField;
 use SilverStripe\Forms\GridField\GridField;
 use Toast\Blocks\Items\ContentTabBlockItem;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
@@ -41,7 +41,13 @@ class TabbedContentBlock extends Block
 
                 $fields->addFieldsToTab('Root.Main', [
                     $gridField,
-                    DropdownField::create('Width', 'Width', singleton(self::class)->dbObject('Width')->enumValues()),
+                    ImageOptionsetField::create('Width', 'Select a Width')
+                        ->setSource([
+                            'wide' => '/app/src/images/widths/wide.svg',
+                            'standard' => '/app/src/images/widths/standard.svg',
+                            'narrow' => '/app/src/images/widths/narrow.svg',
+                            'very-narrow' => '/app/src/images/widths/very-narrow.svg'
+                        ])->setImageWidth(100)->setImageHeight(100)
                 ]);
             } else {
                 $fields->addFieldToTab(
