@@ -5,7 +5,7 @@ Video Block
 <div class="video-block video-block--{$Width} video-block--{$ID}">
     <div class="video-block__constraint">
         <div class="video-block__constraint__player" id="video-block--{$ID}"></div>
-        <div class="video-block__constraint__thumbnail" onclick="playVideo('{$Video}','video-block--{$ID}')">
+        <div class="video-block__constraint__thumbnail" onclick="playVideo('{$Video.VideoID}','video-block--{$ID}')">
         
         <% if $ThumbnailID %>
             <img src="$Thumbnail.FocusFill(1920,1080).URL" width="1920" height="1080" loading="lazy">

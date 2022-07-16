@@ -41,7 +41,7 @@ class ImageBlock extends Block
                     ->setFolderName('Uploads/Blocks'),
                 TextField::create('Caption', 'Caption')
                     ->setDescription('Optional caption for this image'),
-                DropdownField::create('Columns', 'Columns', singleton(self::class)->dbObject('Columns')->enumValues())
+                DropdownField::create('Width', 'Width', singleton(self::class)->dbObject('Width')->enumValues())
             ]);
         });
 

@@ -22,9 +22,12 @@ class AccordionBlock extends Block
 
     private static $plural_name = 'Accordions';
 
-    private static $has_many = [
-        'Items' => AccordionItem::class,
+    private static $db = [
         'Width' => 'Enum("standard,wide,narrow,very-narrow", "standard")'
+    ];
+
+    private static $has_many = [
+        'Items' => AccordionItem::class
     ];
 
     public function getCMSFields()

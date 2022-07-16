@@ -23,7 +23,7 @@ class VideoBlock extends Block
     private static $db = [
         'Caption' => 'Varchar(255)',
         'Video' => VideoLink::class,
-        'BackgroundColour' => 'Enum("white,off-white,primary", "white")'
+        'Width' => 'Enum("standard,wide,narrow,very-narrow", "standard")'
     ];
 
     private static $has_one = [
