@@ -2,6 +2,9 @@
 Name: toastblocks
 ---
 
+PlasticStudio\IconField\IconField:
+  icons_directory: vendor/toastnz/blocks/images/widths
+
 Page:
   extensions:
     - Toast\Blocks\Extensions\PageExtension
