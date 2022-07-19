@@ -37,13 +37,13 @@ class TestimonialBlock extends Block
                 TextField::create('Heading', 'Heading')
             ]);
 
-            if ($this->exists()) {                
+            if ($this->exists()) {
                 $linkConfig = GridFieldConfig_RelationEditor::create(10);
                 $linkConfig->addComponent(GridFieldOrderableRows::create('SortOrder'))
                     ->removeComponentsByType(GridFieldDeleteAction::class)
                     ->addComponent(new GridFieldDeleteAction(false))
                     ->removeComponentsByType(GridFieldAddExistingAutocompleter::class);
-                
+
                 $fields->addFieldsToTab('Root.Main', [
                     GridField::create('Items', 'Testimonials', $this->Items(), $linkConfig)
                 ]);
