@@ -2,16 +2,20 @@
 Testimonial block
 ------------------------------------------------------------------%>
 
-<% if $Testimonials.Count %>
+<% if $Items.Count %>
     <section class="testimonialBlock contentBlock">
         
         <div class="testimonialBlock__wrap">
+
+            <% if $Heading %>
+                <h3>$Heading.XML</h3>
+            <% end_if %>
 
             <%------------------------------------------------------------------
             Testimonial slider
             ------------------------------------------------------------------%>
             <div class="<% if $ShowSlider %>[ js-slider--testimonials ] slider<% else %>stack<% end_if %>">
-                <% loop $Testimonials %>
+                <% loop $Items %>
 
                     <%------------------------------------------------------------------
                     Testimonial item
@@ -19,11 +23,11 @@ Testimonial block
                     <div class="testimonialBlock__wrap__item item">
 
                         <div class="testimonialBlock__wrap__item__quote">
-                            <p>{$Testimonial.XML}</p>
+                            <p>$Testimonial.XML</p>
                         </div>
                         <div class="testimonialBlock__wrap__item__credit">
-                            <% if $Up.ShowNameAndLocation %>
-                                <p><span>{$Title.XML}<% if $Location %>,<% end_if %></span> {$Location.XML}</p>
+                            <% if $Author %>
+                                <p><span>$Author.XML</span></p>
                             <% end_if %>
                         </div>
                     </div>
