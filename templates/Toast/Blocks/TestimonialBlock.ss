@@ -23,16 +23,21 @@ Testimonial block
                     Testimonial item
                     ------------------------------------------------------------------%>
                     <div class="testimonials__wrap__slider__item">
+                        <img src="{$Themedir}/dist/images/svg/quotes.svg" width="88" height="72" loading="lazy">
 
-                        <div class="testimonials__wrap__slider__item__quote">
-                            <p>$Testimonial.XML</p>
+                        <div class="testimonials__wrap__slider__item__testimonial">
+                            <h6 class="colour--white">$Testimonial.XML</h6>
                         </div>
 
-                        <% if $Author %>
-                            <div class="testimonials__wrap__slider__item__credit">
-                                <p class="colour--primary"><span>$Author.XML</span></p>
-                            </div>
-                        <% end_if %>
+    
+                        <div class="testimonials__wrap__slider__item__credit">
+                            <% if $Author %>
+                                <p class="colour--white"><b>$Author.XML</b></p>
+                            <% end_if %>
+                            <% if $Description %>
+                                <p class="colour--white smaller">$Description.XML</p>
+                            <% end_if %>
+                        </div>
 
                     </div>
                 <% end_loop %>

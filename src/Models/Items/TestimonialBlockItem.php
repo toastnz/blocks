@@ -21,6 +21,7 @@ class TestimonialBlockItem extends BlockItem
     private static $db = [
         'Testimonial' => 'Text',
         'Author' => 'Varchar(255)',
+        'Description' => 'Varchar(512)',
         'SortOrder' => 'Int'
     ];
 
@@ -30,7 +31,8 @@ class TestimonialBlockItem extends BlockItem
 
     private static $summary_fields = [
         'Testimonial' => 'Testimonial',
-        'Author' => 'Author'
+        'Author' => 'Author',
+        'Description' => 'Description',
     ];
 
 
@@ -39,8 +41,9 @@ class TestimonialBlockItem extends BlockItem
         $this->beforeUpdateCMSFields(function ($fields) {
 
             $fields->addFieldsToTab('Root.Main', [
+                TextareaField::create('Testimonial', 'Testimonial'),
                 TextField::create('Author', 'Author'),
-                TextareaField::create('Testimonial', 'Testimonial')
+                TextField::create('Description', 'Description')
             ]);
         });
 
