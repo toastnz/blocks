@@ -21,7 +21,7 @@ class DownloadBlock extends Block
     private static $plural_name = 'Downloads';
 
     private static $db = [
-        'Width' => 'Enum("standard,wide,narrow,very-narrow", "standard")'
+        'Width' => 'Enum("standard,wide,narrow,thin", "standard")'
     ];
 
     private static $has_many = [
@@ -33,6 +33,8 @@ class DownloadBlock extends Block
         $this->beforeUpdateCMSFields(function ($fields) {
 
             $fields->removeByName('Items');
+
+            $fields->removeByName(['Items', 'Width']);
 
             if ($this->ID) {
                 $config = GridFieldConfig_RelationEditor::create(50)
@@ -46,12 +48,13 @@ class DownloadBlock extends Block
                     [
                         $grid,
                         ImageOptionsetField::create('Width', 'Select a Width')
-                        ->setSource([
-                            'wide' => '/app/src/images/widths/wide.svg',
-                            'standard' => '/app/src/images/widths/standard.svg',
-                            'narrow' => '/app/src/images/widths/narrow.svg',
-                            'very-narrow' => '/app/src/images/widths/very-narrow.svg'
-                        ])->setImageWidth(100)->setImageHeight(100)                    ]
+                            ->setSource([
+                                'wide' => '/app/src/images/widths/wide.svg',
+                                'standard' => '/app/src/images/widths/standard.svg',
+                                'narrow' => '/app/src/images/widths/narrow.svg',
+                                'thin' => '/app/src/images/widths/thin.svg'
+                            ])->setImageWidth(100)->setImageHeight(100)
+                    ]
                 );
             } else {
                 $fields->addFieldToTab('Root.Main', LiteralField::create('', '<div class="message notice">Save this block to show additional options.</div>'));

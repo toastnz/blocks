@@ -3,6 +3,7 @@
 namespace Toast\Blocks;
 
 use SilverStripe\Assets\Image;
+use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
@@ -20,7 +21,7 @@ class ImageTextBlock extends Block
     private static $db = [
         'Content' => 'HTMLText',
         'Alignment' => 'Enum("standard,reversed", "standard")',
-        'Width' => 'Enum("standard,wide,narrow,very-narrow", "standard")',
+        'Width' => 'Enum("standard,wide,narrow,thin", "standard")',
     ];
 
     private static $has_one = [
@@ -35,15 +36,18 @@ class ImageTextBlock extends Block
     {
         $this->beforeUpdateCMSFields(function ($fields) {
 
+            $fields->removeByName(['Image', 'Alignment', 'Width']);
+
             $fields->addFieldsToTab('Root.Main', [
                 UploadField::create('Image', 'Image')
                     ->setFolderName('Uploads/Blocks'),
+                DropdownField::create('Alignment', 'Alignment', singleton(self::class)->dbObject('Alignment')->enumValues()),
                 ImageOptionsetField::create('Width', 'Select a Width')
                     ->setSource([
                         'wide' => '/app/src/images/widths/wide.svg',
                         'standard' => '/app/src/images/widths/standard.svg',
                         'narrow' => '/app/src/images/widths/narrow.svg',
-                        'very-narrow' => '/app/src/images/widths/very-narrow.svg'
+                        'thin' => '/app/src/images/widths/thin.svg'
                     ])->setImageWidth(100)->setImageHeight(100)
             ]);
         });

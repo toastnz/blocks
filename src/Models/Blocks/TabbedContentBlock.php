@@ -20,7 +20,7 @@ class TabbedContentBlock extends Block
     private static $plural_name = 'Tabbed Content';
 
     private static $db = [
-        'Width' => 'Enum("standard,wide,narrow,very-narrow", "standard")',
+        'Width' => 'Enum("standard,wide,narrow,thin", "standard")',
     ];
 
     private static $has_many = [
@@ -30,7 +30,9 @@ class TabbedContentBlock extends Block
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function ($fields) {
+            $fields->removeByName(['Items', 'Width']);
 
+            
             if ($this->exists()) {
                 $config = GridFieldConfig_RelationEditor::create(50);
                 $config->addComponent(GridFieldOrderableRows::create('SortOrder'))
@@ -40,13 +42,14 @@ class TabbedContentBlock extends Block
                 $gridField = GridField::create('Tabs', 'Tabs', $this->Tabs(), $config);
 
                 $fields->addFieldsToTab('Root.Main', [
+
                     $gridField,
                     ImageOptionsetField::create('Width', 'Select a Width')
                         ->setSource([
                             'wide' => '/app/src/images/widths/wide.svg',
                             'standard' => '/app/src/images/widths/standard.svg',
                             'narrow' => '/app/src/images/widths/narrow.svg',
-                            'very-narrow' => '/app/src/images/widths/very-narrow.svg'
+                            'thin' => '/app/src/images/widths/thin.svg'
                         ])->setImageWidth(100)->setImageHeight(100)
                 ]);
             } else {

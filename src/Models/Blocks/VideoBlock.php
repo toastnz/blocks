@@ -23,7 +23,7 @@ class VideoBlock extends Block
     private static $db = [
         'Caption' => 'Varchar(255)',
         'Video' => VideoLink::class,
-        'Width' => 'Enum("standard,wide,narrow,very-narrow", "standard")'
+        'Width' => 'Enum("standard,wide,narrow,thin", "standard")'
     ];
 
     private static $has_one = [
@@ -38,6 +38,8 @@ class VideoBlock extends Block
     {
         $this->beforeUpdateCMSFields(function ($fields) {
 
+            $fields->removeByName(['Caption', 'Video', 'Thumbnail', 'Width']);
+
             $fields->addFieldsToTab('Root.Main', [
                 TextField::create('Caption', 'Caption'),
                 VideoLinkField::create('Video')
@@ -50,7 +52,7 @@ class VideoBlock extends Block
                         'wide' => '/app/src/images/widths/wide.svg',
                         'standard' => '/app/src/images/widths/standard.svg',
                         'narrow' => '/app/src/images/widths/narrow.svg',
-                        'very-narrow' => '/app/src/images/widths/very-narrow.svg'
+                        'thin' => '/app/src/images/widths/thin.svg'
                     ])->setImageWidth(100)->setImageHeight(100)
             ]);
         });

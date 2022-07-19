@@ -17,13 +17,15 @@ class TextBlock extends Block
 
     private static $db = [
         'Content' => 'HTMLText',
-        'Width' => 'Enum("standard,wide,narrow,very-narrow", "standard")',
-        'BackgroundColour' => 'Enum("white,off-white,primary", "white")'
+        'BackgroundColour' => 'Enum("white,off-white,primary", "white")',
+        'Width' => 'Enum("standard,wide,narrow,thin", "standard")'
     ];
 
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function ($fields) {
+
+            $fields->removeByName(['Content', 'BackgroundColour', 'Width']);
 
             $fields->addFieldsToTab('Root.Main', [
                 HTMLEditorField::create('Content', 'Content'),
@@ -33,7 +35,7 @@ class TextBlock extends Block
                         'wide' => '/app/src/images/widths/wide.svg',
                         'standard' => '/app/src/images/widths/standard.svg',
                         'narrow' => '/app/src/images/widths/narrow.svg',
-                        'very-narrow' => '/app/src/images/widths/very-narrow.svg'
+                        'thin' => '/app/src/images/widths/thin.svg'
                     ])->setImageWidth(100)->setImageHeight(100)
             ]);
         });
