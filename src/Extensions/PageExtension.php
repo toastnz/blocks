@@ -3,31 +3,21 @@
 namespace Toast\Blocks\Extensions;
 
 use Toast\Blocks\Block;
-use SilverStripe\Forms\Tab;
-use SilverStripe\Assets\File;
 use SilverStripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Control\Director;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\ORM\DataExtension;
-use SilverStripe\Control\Controller;
 use SilverStripe\Core\Config\Config;
-use SilverStripe\Control\HTTPRequest;
-use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Forms\GridField\GridField;
-use Toast\Blocks\GridFieldContentBlockState;
-use Toast\Blocks\GridFieldVersionedUnlinkAction;
 use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\Forms\GridField\GridField_ActionMenu;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
-use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\Forms\GridField\GridFieldFilterHeader;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
-use SilverStripe\Forms\GridField\GridFieldSortableHeader;
 use SilverStripe\Versioned\VersionedGridFieldItemRequest;
 use Symbiote\GridFieldExtensions\GridFieldAddNewMultiClass;
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
-use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 
 class PageExtension extends DataExtension

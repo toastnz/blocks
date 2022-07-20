@@ -2,8 +2,6 @@
 Name: toastblocks
 ---
 
-
-
 Page:
   extensions:
     - Toast\Blocks\Extensions\PageExtension
@@ -30,6 +28,9 @@ Toast\Blocks\ChildLinkBlock:
   icon: '[resources]/toastnz/blocks/images/link.svg'
   content_field: 'Content'
 
+Toast\Blocks\CodeBlock:
+  icon: '[resources]/toastnz/blocks/images/code.svg'
+
 Toast\Blocks\ColumnBlock:
   icon: '[resources]/toastnz/blocks/images/splitblock.svg'
 
@@ -44,6 +45,9 @@ Toast\Blocks\HeroBlock:
 
 Toast\Blocks\ImageBlock:
   icon: '[resources]/toastnz/blocks/images/image.svg'
+
+Toast\Blocks\ImageTextBlock:
+  icon: '[resources]/toastnz/blocks/images/imagetext.svg'
 
 Toast\Blocks\LinkBlock:
   icon: '[resources]/toastnz/blocks/images/link.svg'

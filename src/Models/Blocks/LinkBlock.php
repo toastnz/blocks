@@ -45,7 +45,7 @@ class LinkBlock extends Block
                     ])->setImageWidth(100)->setImageHeight(100)
             ]);
 
-            if ($this->ID) {
+            if ($this->exists()) {
                 $linkConfig = GridFieldConfig_RelationEditor::create(10);
                 $linkConfig->addComponent(GridFieldOrderableRows::create('SortOrder'))
                     ->removeComponentsByType(GridFieldDeleteAction::class)

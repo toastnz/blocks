@@ -36,7 +36,7 @@ class AccordionBlock extends Block
 
             $fields->removeByName(['Items', 'Width']);
 
-            if ($this->ID) {
+            if ($this->exists()) {
                 $config = GridFieldConfig_RelationEditor::create(50)
                     ->removeComponentsByType(GridFieldAddExistingAutoCompleter::class)
                     ->removeComponentsByType(GridFieldDeleteAction::class)

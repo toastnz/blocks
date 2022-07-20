@@ -102,7 +102,7 @@ class Block extends DataObject
 
     public function getTitle()
     {
-        if ($this->ID) {
+        if ($this->exists()) {
             return $this->getField('Title') ?: $this->i18n_singular_name();
         } else {
             return $this->getField('Title');
