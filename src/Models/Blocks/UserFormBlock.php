@@ -8,6 +8,7 @@ use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\UserForms\Form\UserForm;
 use UncleCheese\Forms\ImageOptionsetField;
 use SilverStripe\UserForms\Model\UserDefinedForm;
+use SilverStripe\Core\Manifest\ModuleResourceLoader;
 
 class UserFormBlock extends Block
 {
@@ -26,17 +27,20 @@ class UserFormBlock extends Block
     {
         $this->beforeUpdateCMSFields(function ($fields) {
 
-            $fields->insertAfter(
-                'Title',
-                LiteralField::create('', '<div class="message warning"><strong>Note:</strong><br />Form must be configured from the <strong>Form Fields</strong> page tab and only applies to <strong>User Defined Form</strong> page types.</div>'),
+            $fields->insertAfter('Title',
+                LiteralField::create('Info', '<div class="message warning"><strong>Note:</strong><br />Form must be configured from the <strong>Form Fields</strong> page tab and only applies to <strong>User Defined Form</strong> page types.</div>'),
+            );
+
+            $fields->insertAfter('Info',
                 ImageOptionsetField::create('Width', 'Select a Width')
                     ->setSource([
-                        'wide' => '/app/src/images/widths/wide.svg',
-                        'standard' => '/app/src/images/widths/standard.svg',
-                        'narrow' => '/app/src/images/widths/narrow.svg',
-                        'thin' => '/app/src/images/widths/thin.svg'
+                        'wide' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/wide.svg'),
+                        'standard' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/standard.svg'),
+                        'narrow' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/narrow.svg'),
+                        'thin' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/thin.svg')
                     ])->setImageWidth(100)->setImageHeight(100)
             );
+            
         });
 
         return parent::getCMSFields();

@@ -7,6 +7,7 @@ use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\DropdownField;
 use UncleCheese\Forms\ImageOptionsetField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use SilverStripe\Core\Manifest\ModuleResourceLoader;
 
 class ChildLinkBlock extends Block
 {
@@ -34,10 +35,10 @@ class ChildLinkBlock extends Block
                 DropdownField::create('Columns', 'Columns', singleton(self::class)->dbObject('Columns')->enumValues()),
                 ImageOptionsetField::create('Width', 'Select a Width')
                     ->setSource([
-                        'wide' => '/app/src/images/widths/wide.svg',
-                        'standard' => '/app/src/images/widths/standard.svg',
-                        'narrow' => '/app/src/images/widths/narrow.svg',
-                        'thin' => '/app/src/images/widths/thin.svg'
+                        'wide' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/wide.svg'),
+                        'standard' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/standard.svg'),
+                        'narrow' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/narrow.svg'),
+                        'thin' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/thin.svg')
                     ])->setImageWidth(100)->setImageHeight(100)
             ]);
         });

@@ -19,48 +19,50 @@ SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest:
     CmsActionsExtension: Toast\Blocks\Extensions\CmsActionsExtension
 
 Toast\Blocks\TextBlock:
-  icon: '[resources]/toastnz/blocks/images/text.svg'
+  icon: '[resources]/toastnz/blocks/images/icons/text.svg'
 
 Toast\Blocks\AccordionBlock:
-  icon: '[resources]/toastnz/blocks/images/accordion.svg'
+  icon: '[resources]/toastnz/blocks/images/icons/accordion.svg'
 
 Toast\Blocks\ChildLinkBlock:
-  icon: '[resources]/toastnz/blocks/images/link.svg'
+  icon: '[resources]/toastnz/blocks/images/icons/link.svg'
   content_field: 'Content'
 
 Toast\Blocks\CodeBlock:
-  icon: '[resources]/toastnz/blocks/images/code.svg'
+  icon: '[resources]/toastnz/blocks/images/icons/code.svg'
 
 Toast\Blocks\ColumnBlock:
-  icon: '[resources]/toastnz/blocks/images/splitblock.svg'
+  icon: '[resources]/toastnz/blocks/images/icons/splitblock.svg'
 
 Toast\Blocks\DownloadBlock:
-  icon: '[resources]/toastnz/blocks/images/download.svg'
+  icon: '[resources]/toastnz/blocks/images/icons/download.svg'
 
 Toast\Blocks\GalleryBlock:
-  icon: '[resources]/toastnz/blocks/images/gallery.svg'
+  icon: '[resources]/toastnz/blocks/images/icons/gallery.svg'
 
 Toast\Blocks\HeroBlock:
-  icon: '[resources]/toastnz/blocks/images/hero.svg'
+  icon: '[resources]/toastnz/blocks/images/icons/hero.svg'
 
 Toast\Blocks\ImageBlock:
-  icon: '[resources]/toastnz/blocks/images/image.svg'
+  icon: '[resources]/toastnz/blocks/images/icons/image.svg'
 
 Toast\Blocks\ImageTextBlock:
-  icon: '[resources]/toastnz/blocks/images/imagetext.svg'
+  icon: '[resources]/toastnz/blocks/images/icons/imagetext.svg'
 
 Toast\Blocks\LinkBlock:
-  icon: '[resources]/toastnz/blocks/images/link.svg'
+  icon: '[resources]/toastnz/blocks/images/icons/link.svg'
 
 Toast\Blocks\NewsBlock:
-  icon: '[resources]/toastnz/blocks/images/news.svg'
+  icon: '[resources]/toastnz/blocks/images/icons/news.svg'
 
 Toast\Blocks\TabbedContentBlock:
-  icon: '[resources]/toastnz/blocks/images/tabbedcontent.svg'
+  icon: '[resources]/toastnz/blocks/images/icons/tabbedcontent.svg'
 
 Toast\Blocks\TestimonialBlock:
-  icon: '[resources]/toastnz/blocks/images/testimonial.svg'
+  icon: '[resources]/toastnz/blocks/images/icons/testimonial.svg'
 
 Toast\Blocks\VideoBlock:
-  icon: '[resources]/toastnz/blocks/images/video.svg'
+  icon: '[resources]/toastnz/blocks/images/icons/video.svg'
 
+Toast\Blocks\UserFormBlock:
+  icon: '[resources]/toastnz/blocks/images/icons/userform.svg'

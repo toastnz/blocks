@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>thin</title>
+    <g id="thin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <line x1="30.5" y1="6.5" x2="30.5" y2="46.5" id="Line-Copy" stroke-opacity="0.162709483" stroke="#43536D" stroke-linecap="square" stroke-dasharray="2"></line>
+        <line x1="50.5" y1="6.5" x2="50.5" y2="46.5" id="Line-Copy" stroke-opacity="0.479913031" stroke="#43536D" stroke-linecap="square" stroke-dasharray="2"></line>
+        <line x1="9.5" y1="6.5" x2="9.5" y2="46.5" id="Line-Copy" stroke-opacity="0.479913031" stroke="#43536D" stroke-linecap="square" stroke-dasharray="2"></line>
+        <rect id="Rectangle" stroke="#43536D" fill="#A5ADB9" x="20.5" y="18.5" width="19" height="14" rx="1"></rect>
+        <text id="THIN" font-family="Gotham-Bold, Gotham" font-size="6" font-weight="bold" fill="#43536D">
+            <tspan x="22.398" y="57">THIN</tspan>
+        </text>
+    </g>
+</svg>

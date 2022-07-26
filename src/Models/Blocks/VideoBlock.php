@@ -11,6 +11,7 @@ use UncleCheese\Forms\ImageOptionsetField;
 use Axllent\FormFields\FieldType\VideoLink;
 use Axllent\FormFields\Forms\VideoLinkField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Core\Manifest\ModuleResourceLoader;
 
 class VideoBlock extends Block
 {
@@ -49,10 +50,10 @@ class VideoBlock extends Block
                     ->setDescription('Will automatically use YouTube thumbnail if this image is not uploaded. Ideal size: 960x540'),
                 ImageOptionsetField::create('Width', 'Select a Width')
                     ->setSource([
-                        'wide' => '/app/src/images/widths/wide.svg',
-                        'standard' => '/app/src/images/widths/standard.svg',
-                        'narrow' => '/app/src/images/widths/narrow.svg',
-                        'thin' => '/app/src/images/widths/thin.svg'
+                        'wide' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/wide.svg'),
+                        'standard' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/standard.svg'),
+                        'narrow' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/narrow.svg'),
+                        'thin' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/thin.svg')
                     ])->setImageWidth(100)->setImageHeight(100)
             ]);
         });

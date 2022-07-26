@@ -6,6 +6,7 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\RequiredFields;
 use UncleCheese\Forms\ImageOptionsetField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use SilverStripe\Core\Manifest\ModuleResourceLoader;
 
 class TextBlock extends Block
 {
@@ -32,10 +33,10 @@ class TextBlock extends Block
                 DropdownField::create('BackgroundColour', 'Background Colour', singleton(self::class)->dbObject('BackgroundColour')->enumValues()),
                 ImageOptionsetField::create('Width', 'Select a Width')
                     ->setSource([
-                        'wide' => '/app/src/images/widths/wide.svg',
-                        'standard' => '/app/src/images/widths/standard.svg',
-                        'narrow' => '/app/src/images/widths/narrow.svg',
-                        'thin' => '/app/src/images/widths/thin.svg'
+                        'wide' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/wide.svg'),
+                        'standard' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/standard.svg'),
+                        'narrow' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/narrow.svg'),
+                        'thin' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/thin.svg')
                     ])->setImageWidth(100)->setImageHeight(100)
             ]);
         });

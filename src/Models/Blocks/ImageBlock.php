@@ -9,6 +9,7 @@ use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use UncleCheese\Forms\ImageOptionsetField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Core\Manifest\ModuleResourceLoader;
 
 class ImageBlock extends Block
 {
@@ -45,10 +46,10 @@ class ImageBlock extends Block
                     ->setDescription('Optional caption for this image'),
                 ImageOptionsetField::create('Width', 'Select a Width')
                     ->setSource([
-                        'wide' => '/app/src/images/widths/wide.svg',
-                        'standard' => '/app/src/images/widths/standard.svg',
-                        'narrow' => '/app/src/images/widths/narrow.svg',
-                        'thin' => '/app/src/images/widths/thin.svg'
+                        'wide' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/wide.svg'),
+                        'standard' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/standard.svg'),
+                        'narrow' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/narrow.svg'),
+                        'thin' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/thin.svg')
                     ])->setImageWidth(100)->setImageHeight(100)
             ]);
         });

@@ -10,6 +10,7 @@ use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
+use SilverStripe\Core\Manifest\ModuleResourceLoader;
 
 class TabbedContentBlock extends Block
 {
@@ -46,10 +47,10 @@ class TabbedContentBlock extends Block
                     $gridField,
                     ImageOptionsetField::create('Width', 'Select a Width')
                         ->setSource([
-                            'wide' => '/app/src/images/widths/wide.svg',
-                            'standard' => '/app/src/images/widths/standard.svg',
-                            'narrow' => '/app/src/images/widths/narrow.svg',
-                            'thin' => '/app/src/images/widths/thin.svg'
+                            'wide' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/wide.svg'),
+                            'standard' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/standard.svg'),
+                            'narrow' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/narrow.svg'),
+                            'thin' => ModuleResourceLoader::resourceURL('toastnz/blocks:images/widths/thin.svg')
                         ])->setImageWidth(100)->setImageHeight(100)
                 ]);
             } else {
