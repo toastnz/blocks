@@ -6,8 +6,11 @@
         <line x1="50.5" y1="6.5" x2="50.5" y2="46.5" id="Line-Copy" stroke-opacity="0.479913031" stroke="#43536D" stroke-linecap="square" stroke-dasharray="2"></line>
         <line x1="9.5" y1="6.5" x2="9.5" y2="46.5" id="Line-Copy" stroke-opacity="0.479913031" stroke="#43536D" stroke-linecap="square" stroke-dasharray="2"></line>
         <rect id="Rectangle" stroke="#43536D" fill="#A5ADB9" x="3.5" y="18.5" width="53" height="14" rx="1"></rect>
-        <text id="WIDE" font-family="Gotham-Bold, Gotham" font-size="6" font-weight="bold" fill="#43536D">
-            <tspan x="21.27" y="57">WIDE</tspan>
-        </text>
+        <g id="WIDE" transform="translate(21.450000, 52.788000)" fill="#43536D" fill-rule="nonzero">
+            <polygon id="Path" points="1.434 4.242 2.238 4.242 3.186 1.494 4.134 4.242 4.938 4.242 6.372 0.012 5.406 0.012 4.536 2.856 3.594 0 2.802 0 1.86 2.856 0.99 0.012 0 0.012"></polygon>
+            <polygon id="Path" points="7.098 4.212 8.022 4.212 8.022 0.012 7.098 0.012"></polygon>
+            <path d="M9.072,4.212 L10.71,4.212 C12.03,4.212 12.942,3.294 12.942,2.112 L12.942,2.1 C12.942,0.918 12.03,0.012 10.71,0.012 L9.072,0.012 L9.072,4.212 Z M10.71,0.846 C11.46,0.846 11.976,1.368 11.976,2.112 L11.976,2.124 C11.976,2.868 11.46,3.378 10.71,3.378 L9.996,3.378 L9.996,0.846 L10.71,0.846 Z" id="Shape"></path>
+            <polygon id="Path" points="13.764 4.212 16.962 4.212 16.962 3.39 14.682 3.39 14.682 2.508 16.662 2.508 16.662 1.686 14.682 1.686 14.682 0.834 16.932 0.834 16.932 0.012 13.764 0.012"></polygon>
+        </g>
     </g>
 </svg>

@@ -6,8 +6,11 @@
         <line x1="50.5" y1="6.5" x2="50.5" y2="46.5" id="Line-Copy" stroke-opacity="0.479913031" stroke="#43536D" stroke-linecap="square" stroke-dasharray="2"></line>
         <line x1="9.5" y1="6.5" x2="9.5" y2="46.5" id="Line-Copy" stroke-opacity="0.479913031" stroke="#43536D" stroke-linecap="square" stroke-dasharray="2"></line>
         <rect id="Rectangle" stroke="#43536D" fill="#A5ADB9" x="20.5" y="18.5" width="19" height="14" rx="1"></rect>
-        <text id="THIN" font-family="Gotham-Bold, Gotham" font-size="6" font-weight="bold" fill="#43536D">
-            <tspan x="22.398" y="57">THIN</tspan>
-        </text>
+        <g id="THIN" transform="translate(22.602000, 52.800000)" fill="#43536D" fill-rule="nonzero">
+            <polygon id="Path" points="1.278 4.2 2.202 4.2 2.202 0.852 3.48 0.852 3.48 0 0 0 0 0.852 1.278 0.852"></polygon>
+            <polygon id="Path" points="4.188 4.2 5.112 4.2 5.112 2.514 6.816 2.514 6.816 4.2 7.74 4.2 7.74 0 6.816 0 6.816 1.662 5.112 1.662 5.112 0 4.188 0"></polygon>
+            <polygon id="Path" points="8.79 4.2 9.714 4.2 9.714 0 8.79 0"></polygon>
+            <polygon id="Path" points="10.764 4.2 11.676 4.2 11.676 1.53 13.71 4.2 14.496 4.2 14.496 0 13.584 0 13.584 2.586 11.616 0 10.764 0"></polygon>
+        </g>
     </g>
 </svg>
