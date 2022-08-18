@@ -1,0 +1,9 @@
+---
+Name: toastblockscache
+---
+
+SilverStripe\Core\Injector\Injector:
+    Psr\SimpleCache\CacheInterface.toastBlocksCache:
+      factory: SilverStripe\Core\Cache\CacheFactory
+      constructor:
+        namespace: 'toastBlocksCache'

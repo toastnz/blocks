@@ -9,6 +9,7 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Security\Member;
 use SilverStripe\Control\Director;
+use Psr\SimpleCache\CacheInterface;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\LiteralField;
@@ -16,6 +17,7 @@ use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\Security\Permission;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\ORM\FieldType\DBField;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\CMS\Controllers\CMSPageEditController;
 
@@ -72,6 +74,20 @@ class Block extends DataObject
     {
         $template = $this->ClassName;
         $this->extend('updateBlockTemplate', $template);
+
+        if (self::config()->get('enable_cache')) {
+            $cache = Injector::inst()->get(CacheInterface::class . '.toastBlocksCache');
+
+            if ($cachedContents = $cache->get($this->getCacheKey())) {
+                return $cachedContents;
+            }
+
+            $renderedContents = $this->renderWith([$template, 'Toast\Blocks\Block']);
+            $cache->set($this->getCacheKey(), $renderedContents);
+
+            return $renderedContents;
+        }
+
         return $this->renderWith([$template, 'Toast\Blocks\Block']);
     }
 
@@ -308,5 +324,25 @@ class Block extends DataObject
         }
 
         return true;
+    }
+
+    public function getCacheKey()
+    {
+        $keyParts = ['Block', $this->ID, $this->LastEdited];
+        $relations = $this->hasOne() + $this->hasMany() + $this->manyMany();
+
+        foreach(array_keys($relations) as $relationName) {
+            foreach($this->$relationName() as $record) {
+                $keyParts[] = $record->LastEdited;
+            }
+        }
+
+        return sha1(implode(',', $keyParts));        
+    }
+
+    public function clearCache()
+    {
+        $cache = Injector::inst()->get(CacheInterface::class . '.toastBlocksCache');
+        $cache->delete($this->getCacheKey());
     }
 }

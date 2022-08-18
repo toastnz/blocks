@@ -6,6 +6,10 @@ Page:
   extensions:
     - Toast\Blocks\Extensions\PageExtension
 
+PageController:
+  extensions:
+    - Toast\Blocks\Extensions\PageControllerExtension
+
 Toast\Blocks\Extensions\PageExtension:
   available_blocks:
     - Toast\Blocks\TextBlock

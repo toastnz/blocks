@@ -3,9 +3,7 @@
 namespace Toast\Blocks\Extensions;
 
 use Toast\Blocks\Block;
-use SilverStripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Control\Director;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Core\Config\Config;
@@ -77,21 +75,3 @@ class PageExtension extends DataExtension
 
 }
 
-class PageControllerExtension extends Extension
-{
-
-    public function contentblock()
-    {
-        if (Director::is_ajax()) {
-            $id = $this->owner->getRequest()->param('ID');
-            $contentBlock = Block::get()->byID($id);
-
-            if ($contentBlock && $contentBlock->exists()) {
-                return $contentBlock->forTemplate();
-            }
-        }
-
-        return $this->owner->redirect($this->owner->Link());
-    }
-
-}
