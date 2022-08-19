@@ -12,6 +12,7 @@ use SilverStripe\Control\Director;
 use Psr\SimpleCache\CacheInterface;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\Security\Permission;
@@ -329,6 +330,14 @@ class Block extends DataObject
     public function getCacheKey()
     {
         $keyParts = ['Block', $this->ID, $this->LastEdited];
+
+        $dbFields = Config::inst()->get($this->ClassName, 'db');        
+        $dbFields = is_array($dbFields) ? $dbFields : [];
+
+        foreach(array_keys($dbFields) as $dbField) {
+            $keyParts[] = $this->$dbField;
+        }
+        
         $relations = $this->hasOne() + $this->hasMany() + $this->manyMany();
 
         foreach(array_keys($relations) as $relationName) {
@@ -339,6 +348,7 @@ class Block extends DataObject
 
         return sha1(implode(',', $keyParts));        
     }
+
 
     public function clearCache()
     {
