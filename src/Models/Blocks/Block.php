@@ -309,7 +309,7 @@ class Block extends DataObject
     public function canArchive($member = null)
     {
         if (!$member) {
-            $member = Member::currentUser();
+            $member = Security::getCurrentUser();
         }
 
         $extended = $this->extendedCan('canArchive', $member);
