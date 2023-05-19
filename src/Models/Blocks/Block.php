@@ -5,6 +5,7 @@ namespace Toast\Blocks;
 use Page;
 use ReflectionClass;
 use SilverStripe\ORM\DB;
+use SilverStripe\Security\Security;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Security\Member;
@@ -231,7 +232,7 @@ class Block extends DataObject
     public function canPublish($member = null)
     {
         if (!$member || !(is_a($member, Member::class)) || is_numeric($member)) {
-            $member = Member::currentUser();
+            $member = Security::getCurrentUser();
         }
 
         if ($member && Permission::checkMember($member, "ADMIN")) {
