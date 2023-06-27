@@ -4,7 +4,6 @@ namespace Toast\Blocks;
 
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\LiteralField;
-use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\UserForms\Form\UserForm;
 use UncleCheese\Forms\ImageOptionsetField;
 use SilverStripe\UserForms\Model\UserDefinedForm;
@@ -50,21 +49,33 @@ class UserFormBlock extends Block
     {
         if ($page = $this->getParentPage()) {
             if ($page->ClassName == UserDefinedForm::class) {
-                $controller = Controller::curr();
-                $form = UserForm::create($controller, 'Form_' . $page->ID);
-                $form->setFormAction(Controller::join_links($page->Link(), 'Form'));
-                $controller->generateConditionalJavascript();
-                return $form;
+                if (Controller::has_curr()) {
+                    $controller = Controller::curr();
+                    $form = UserForm::create($controller, 'Form_' . $page->ID);
+                    $form->setFormAction(Controller::join_links($page->Link(), 'Form'));
+                    $controller->generateConditionalJavascript();
+                    return $form;
+                }
             }
         }
     }
 
+    public function getIsFinished() 
+    {
+        if (Controller::has_curr()) {
+            if ($request = Controller::curr()->getRequest()) {
+                return $request->param('Action') == 'finished';
+            }
+        }
+    }    
 
-
-    public function getContentSummary()
+    public function getFormSuccessMessage()
     {
         if ($page = $this->getParentPage()) {
-            return DBField::create_field('HTMLText', '<strong>Applied to page:</strong><br />' . $page->MenuTitle);
+            if ($page->ClassName == UserDefinedForm::class) {
+                return $page->dbObject('OnCompleteMessage');
+            }
         }
     }
+
 }
